@@ -1,7 +1,7 @@
 require('dotenv').config() //Подключение к окружению
 const express = require('express') //Подключение фреймворка
 const sequelize = require('./db')  //Подключение к бд
-//const models = require('./models/models') //Инициализация бд
+const models = require('./model/model') //Инициализация бд
 const cors = require('cors') //Импорт cors
 //const fileUpload = require('express-fileupload')
 //const router = require('./routes/index')
@@ -36,7 +36,7 @@ app.use(express.json())  //Это чтобы приложение могло п�
 const start = async () => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync({alter:true})
+        await sequelize.sync({ alter: true })
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
     } catch (e) {
         console.log(e)
