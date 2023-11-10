@@ -28,12 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            components = new System.ComponentModel.Container();
+            bindingSource1 = new BindingSource(components);
+            купите = new Button();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
+            SuspendLayout();
+            // 
+            // купите
+            // 
+            купите.Location = new Point(237, 153);
+            купите.Name = "купите";
+            купите.Size = new Size(280, 120);
+            купите.TabIndex = 0;
+            купите.Text = "купите";
+            купите.UseVisualStyleBackColor = true;
+            купите.Click += button1_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(купите);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private BindingSource bindingSource1;
+        private Button купите;
     }
 }
