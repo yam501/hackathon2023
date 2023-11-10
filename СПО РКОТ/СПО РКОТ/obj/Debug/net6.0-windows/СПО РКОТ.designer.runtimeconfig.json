@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\mirel\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\mirel\\.nuget\\packages"
+      "C:\\Users\\orfimorf\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\orfimorf\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

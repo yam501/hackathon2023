@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\mirel\\.nuget\\packages\\": {}
+    "C:\\Users\\orfimorf\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\hackathon2023\\СПО РКОТ\\СПО РКОТ\\СПО РКОТ.csproj",
+      "projectUniqueName": "C:\\Users\\orfimorf\\Source\\Repos\\hackathon2023\\СПО РКОТ\\СПО РКОТ\\СПО РКОТ.csproj",
       "projectName": "СПО РКОТ",
-      "projectPath": "D:\\hackathon2023\\СПО РКОТ\\СПО РКОТ\\СПО РКОТ.csproj",
-      "packagesPath": "C:\\Users\\mirel\\.nuget\\packages\\",
-      "outputPath": "D:\\hackathon2023\\СПО РКОТ\\СПО РКОТ\\obj\\",
+      "projectPath": "C:\\Users\\orfimorf\\Source\\Repos\\hackathon2023\\СПО РКОТ\\СПО РКОТ\\СПО РКОТ.csproj",
+      "packagesPath": "C:\\Users\\orfimorf\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\orfimorf\\Source\\Repos\\hackathon2023\\СПО РКОТ\\СПО РКОТ\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mirel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\orfimorf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
