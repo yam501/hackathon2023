@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ButtonUI = ({...props}) => {
+const ButtonUI = ({onClick, ...props}) => {
     return (
-        <button>
+        <button onClick={onClick} {...props}>
             {props.children}
         </button>
     );
