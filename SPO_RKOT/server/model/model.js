@@ -4,17 +4,17 @@ const { DataTypes } = require('sequelize')
 
 
 const ExternalTable = sequelize.define('externalTable', {
-    id:{ type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     district: { type: DataTypes.STRING, allowNull: true },
     place: { type: DataTypes.STRING, allowNull: true },
     period: { type: DataTypes.STRING, allowNull: true }
 
 
 
-},{timestamps: false})
+}, { timestamps: false })
 
 const InternalTable = sequelize.define('internalTable', {
-    id:{ type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     externalTableId: { type: DataTypes.INTEGER, allowNull: false },
 
     companyName: { type: DataTypes.STRING, allowNull: true },
@@ -38,9 +38,9 @@ const InternalTable = sequelize.define('internalTable', {
     negativeMOSSamplesCount: { type: DataTypes.FLOAT, allowNull: false },
     SMSQuantity: { type: DataTypes.FLOAT, allowNull: false },
     quantityConnection: { type: DataTypes.FLOAT, allowNull: false },
-    quantitySessions: { type: DataTypes.FLOAT, allowNull: false }, 
-    
-},{timestamps: false})
+    quantitySessions: { type: DataTypes.FLOAT, allowNull: false },
+
+}, { timestamps: false })
 
 
 
