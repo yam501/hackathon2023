@@ -32,8 +32,19 @@ function countCompanies(dataArray) {
         }
     }
 
-    return companyCount;
+  return companyCount;
 }
+
+const regionDictionary = {
+  "ЦЕНТРАЛЬНОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "ЦФО",
+  "СЕВЕРО-ЗАПАДНОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "СЗФО",
+  "ЮЖНОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "ЮФО",
+  "ПРИВОЛЖСКОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "ПФО",
+  "УРАЛЬСКОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "УФО",
+  "СИБИРСКОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "СФО",
+  "ДАЛЬНЕВОСТОЧНОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "ДФО",
+  "СЕВЕРО-КАВКАЗСКОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "СКФО"
+};
 
 
 function App() {
@@ -78,13 +89,14 @@ function App() {
 
     }
 
-    const handleFile = async e => {
-        const lenOfFiles = e.target.files.length
-        for (let i = 0; i < lenOfFiles; i++) {
-            const file = e.target.files[i]
-            if (!file.name.includes('.xlsx') || !file.name.includes('.xls')) return console.log('выбран не тот тип файлов')
-            const data = await file.arrayBuffer();
-            const workbook = XLSX.readFile(data, {sheetRows: 50})
+  //Загрузка excel файла и разбиение его на json массивы
+  const handleFile = async e => {
+    const lenOfFiles = e.target.files.length
+    for (let i = 0; i < lenOfFiles; i++) {
+      const file = e.target.files[i]
+      if (!file.name.includes('.xlsx') || !file.name.includes('.xls')) return console.log('выбран не тот тип файлов')
+      const data = await file.arrayBuffer();
+      const workbook = XLSX.readFile(data, { sheetRows: 50 })
 
             const worksheet = workbook.Sheets[workbook.SheetNames[0]]
             const jsonData = XLSX.utils.sheet_to_json(worksheet, {
@@ -97,22 +109,28 @@ function App() {
 
     }
 
-    const createExternalTable = async (jsonData) => {
-        let district = jsonData[7][0]?.substring(21)
-        let place = jsonData[13][0]?.substring(27)
-        let startDate = pgFormatDate(jsonData[12][0]?.substring(30, 40))
-        let endDate = pgFormatDate(jsonData[12][0]?.substring(44, 54))
+  //Создание внешней таблицы
+  const createExternalTable = async (jsonData) => {
+
+
+    let district = ((regionDictionary[jsonData[7][0]?.substring(21)]) != null) ? regionDictionary[jsonData[7][0]?.substring(21)] : jsonData[7][0]?.substring(21)
+
+    let place = jsonData[13][0]?.substring(27)
+    let startDate = pgFormatDate(jsonData[12][0]?.substring(30, 40))
+    let endDate = pgFormatDate(jsonData[12][0]?.substring(44, 54))
 
         let exTab = await externalTable.create(district, place, startDate, endDate)
 
         await createInternalTable(jsonData, exTab.data.id)
     }
 
-    // Ввод даннхы в бд из таблицы, i - кол-во компаний
-    const createInternalTable = async (jsonData, exId) => {
-        const externalTableId = exId
-        const quantOfCompanies = countCompanies(jsonData[17])  //Определениен количества компаний
-        for (let i = 2; i <= quantOfCompanies; i++) { //От 2 т.к. первые два столба - статичные описания, значения начинаются с 3-го
+
+  //Создание внутренней таблицы
+  // Ввод даннхы в бд из таблицы, i - кол-во компаний
+  const createInternalTable = async (jsonData, exId) => {
+    const externalTableId = exId
+    const quantOfCompanies = countCompanies(jsonData[17])  //Определениен количества компаний
+    for (let i = 2; i <= quantOfCompanies + 1; i++) { //От 2 т.к. первые два столба - статичные описания, значения начинаются с 3-го
 
             //Статичные индексы, т.к. данные в excel находятся в одних и тех же строках
             //Отличаются лишь столбцы - сами компании, по ним мы и идем с помощью fori
