@@ -17,6 +17,7 @@ const TableItem = ({openTable, index, getIndex, dataTable, ...props}) => {
                 </span>
             </td>
         </tr>
+
     );
 };
 
