@@ -25,9 +25,15 @@ function App() {
         defval: ""
       })
       setDataTable(jsonData)
+      await createExternalTable(jsonData)
       console.log(jsonData)
     }
-
+  
+    const createExternalTable = async (jsonData) => {
+      console.log(jsonData[12][0])
+  
+    }
+  
   return (
     <div className="App">
       <Header handleFile={handleFile} />
