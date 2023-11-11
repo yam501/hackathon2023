@@ -1,0 +1,60 @@
+/* Фон для модального окна */
+.modal {
+    display: flex; /* По умолчанию скрываем */
+    position: fixed; /* Делаем фиксированным */
+    z-index: 0; /* Поверх основого окна */
+    left: 0;
+    top: 0;
+    width: 100%; /* На всю ширину */
+    height: 100%; /* На всю высоту */
+    overflow: auto; /* Включаем скролл при переполнении */
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный темный фон */
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+/* Модальное окно */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 50%;
+    padding: 20px;
+    position: relative;
+    color: black;
+}
+
+.closeModal {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    width: 24px;
+    height: 24px;
+    opacity: 1;
+    cursor: pointer;
+    transition: opacity ease 0.5s;
+
+    &:hover {
+        opacity: 0.2;
+    }
+}
+
+.closeModal::before,
+.closeModal::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #1E3685;
+}
+
+.closeModal::before {
+    transform: rotate(45deg);
+}
+
+.closeModal::after {
+    transform: rotate(-45deg);
+}
