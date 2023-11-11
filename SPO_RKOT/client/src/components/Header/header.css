@@ -28,10 +28,11 @@
 .header_title_text {
     font-size: calc(18px + 6 * (100vw/1903));
     font-weight: 550;
+    user-select: none;
 }
 
 .header_btn_box {
-    width: 30%;
+    width: 45%;
     height: 2.3vw;
     display: flex;
     align-items: center;
@@ -45,7 +46,7 @@
     border: 1px solid #ECF2F6;
     border-radius: 7px;
     color: white;
-    font-size: calc(17px + 6 * (100vw/1903));
+    font-size: calc(18px + 6 * (100vw/1903));
     font-weight: 500;
     display: flex;
     align-items: center;
