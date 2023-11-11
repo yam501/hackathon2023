@@ -7,7 +7,8 @@ const ExternalTable = sequelize.define('externalTable', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     district: { type: DataTypes.STRING, allowNull: true },
     place: { type: DataTypes.STRING, allowNull: true },
-    period: { type: DataTypes.STRING, allowNull: true }
+    startDate: { type: DataTypes.STRING, allowNull: true },
+    endDate: { type: DataTypes.STRING, allowNull: true }
 
 
 
@@ -17,7 +18,7 @@ const InternalTable = sequelize.define('internalTable', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     externalTableId: { type: DataTypes.INTEGER, allowNull: false },
 
-    companyName: { type: DataTypes.STRING, allowNull: true },
+    companyName: { type: DataTypes.STRING, allowNull: false },
 
     voiceServiceNonAcessibility: { type: DataTypes.FLOAT, allowNull: false },
     voiceServiceCutOffRatio: { type: DataTypes.FLOAT, allowNull: false },
