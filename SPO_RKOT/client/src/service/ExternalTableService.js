@@ -1,8 +1,8 @@
 import { $host } from "../http";
 
 const ExternalTableService = {
-    async create(district, place, period) {
-        return new Promise((resolve) => resolve($host.post('api/externalTable/create', { district, place, period })))
+    async create(district, place, startDate, endDate) {
+        return new Promise((resolve) => resolve($host.post('api/externalTable/create', { district, place, startDate, endDate })))
     },
 
     async fetchAll() {

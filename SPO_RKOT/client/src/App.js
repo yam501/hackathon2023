@@ -54,13 +54,17 @@ function App() {
   const createExternalTable = async (jsonData) => {
     let district = jsonData[7][0]?.substring(21)
     let place = jsonData[13][0]?.substring(27)
-    let time = jsonData[12][0]?.substring(30)
-    let exTab = await externalTable.create(district, place, time)
+    let startDate = jsonData[12][0]?.substring(30,40)
+    let endDate = jsonData[12][0]?.substring(44,54)
+    // let date = new Date(endDate)
+    // let datevo = new Date(date.getDay(), date.getMonth(), date.getFullYear())
+    // console.log(datevo)
+    let exTab = await externalTable.create(district, place, startDate, endDate)
 
     await createInternalTable(jsonData, exTab.data.id)
   }
 
-
+ // Ввод даннхы в бд из таблицы, i - кол-во компаний 
   const createInternalTable = async (jsonData, exId) => {
     const externalTableId = exId
     const lenOfCompany = jsonData[17].length - 2
@@ -97,9 +101,6 @@ function App() {
         testVoiceConnectionQuantity, POLQA, negativeMOSSamplesCount, SMSQuantity, quantityConnection,
         quantitySessions)
     }
-
-
-    console.log(lenOfCompany)
   }
 
   return (

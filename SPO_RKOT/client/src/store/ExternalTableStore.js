@@ -17,8 +17,8 @@ export default class ExternalTableStore {
         this.setExternalTables(response.data)
     }
 
-    async create(district, place, period) {
-        return await ExternalTableService.create(district, place, period)
+    async create(district, place, startDate, endDate) {
+        return await ExternalTableService.create(district, place, startDate, endDate)
     }
 
     get externalTable(){
