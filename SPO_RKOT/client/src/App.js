@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     getDataTables()
-  }, [])
+  }, [externalTable.externalTable.length])
   
 
   const getDataTables = async () =>{
@@ -101,7 +101,7 @@ function App() {
   return (
     <div className="App">
       <Header handleFile={handleFile} />
-      { openTable && <InformPanel openTable={open}/>}
+ 
       <Table openTable={open} show={openTable} />
       <button onClick={() => console.log(externalTable.externalTable)}> ЖМИ МЕНЯ</button>
 

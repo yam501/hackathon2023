@@ -1,9 +1,13 @@
 import React from 'react';
 
-const TableHead = ({show, ...props}) => {
+const TableHead = ({show, dataTable, ...props}) => {
     return (
         <tr>
-            <td className='table_column'>das</td>
+            {dataTable.map(item => {
+            <td className='table_column'>
+                {}
+            </td>
+            })}
         </tr>
     );
 };
