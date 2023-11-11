@@ -3,12 +3,12 @@ import InternalTableService from "../service/InternalTableService"
 
 export default class InternalTableStore {
     constructor() {
-        this._internallTable = []
+        this._internalTable = []
         makeAutoObservable(this)
     }
 
-    setExternalTables(internallTable) {
-        this.internallTable = internallTable
+    setExternalTables(internalTable) {
+        this.internalTable = internalTable
 
     }
 
@@ -31,8 +31,7 @@ export default class InternalTableStore {
         HTTPSessionFailureRatio, HTTPULMeanUserDataRate, HTTPDLMeanUserDataRate, HTTPSessionTime,
 
         testVoiceConnectionQuantity, POLQA, negativeMOSSamplesCount, SMSQuantity, quantityConnection,
-        quantitySessions
-        ) {
+        quantitySessions) {
         await InternalTableService.create(
             externalTableId, companyName,
 
@@ -42,7 +41,12 @@ export default class InternalTableStore {
             HTTPSessionFailureRatio, HTTPULMeanUserDataRate, HTTPDLMeanUserDataRate, HTTPSessionTime,
 
             testVoiceConnectionQuantity, POLQA, negativeMOSSamplesCount, SMSQuantity, quantityConnection,
-            quantitySessions)
+            quantitySessions
+        )
+    }
+
+    get internalTable() {
+        return this._internalTable
     }
 
 }
