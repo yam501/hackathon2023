@@ -100,13 +100,13 @@ function App() {
   // Ввод даннхы в бд из таблицы, i - кол-во компаний 
   const createInternalTable = async (jsonData, exId) => {
     const externalTableId = exId
-    const lenOfCompany = jsonData[17].length - 2
-    for (let i = 2; i <= lenOfCompany; i++) {           //Определениен количества компаний
+    const lenOfCompany = jsonData[17].length - 2  //Определениен количества компаний
+    for (let i = 2; i <= lenOfCompany; i++) {
 
       //Статичные индексы, т.к. данные в excel находятся в одних и тех же строках
       //Отличаются лишь столбцы - сами компании, по ним мы и идем с помощью fori
-      let companyName = jsonData[17][i]
-      let voiceServiceNonAcessibility = jsonData[18][i]
+      let companyName = isNaN(jsonData[17][i]) ? jsonData[17][i] : console.log("null comapyName")
+      let voiceServiceNonAcessibility = isNaN(jsonData[18][i]) ? jsonData[18][i] : console.log("null voiceServiceNonAcessibility")
       let voiceServiceCutOffRatio = jsonData[19][i]
       let speechQualityonCallbasis = jsonData[20][i]
       let negativeMOSSamplesRatio = jsonData[21][i]
