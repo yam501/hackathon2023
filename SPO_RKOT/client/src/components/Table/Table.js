@@ -16,15 +16,18 @@ const Table = ({openTable, show, ...props}) => {
     const [check, setCheck] = useState(false)
     const [index, setIndex] = useState(null);
     const [id, setId] = useState(null);
+    //Получение индекса и айдишника из внешней таблицы
     const getIndex = (i, id) => {
         setIndex(i)
         setId(id)
     }
 
+    //получение данных для отрисовки таблиц с бд
     const uplod = async () => {
         id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => setRenderCol(internalTable.internalTable))
         
     }
+    //конвертация в массив ключей объекта
     const dynamicParNames = () => {
         setTableRow(Object.keys(renderCol[0] ? renderCol[0] : {}).splice(2))
     }

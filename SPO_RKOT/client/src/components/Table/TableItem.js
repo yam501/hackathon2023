@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 
 const TableItem = ({openTable, index, getIndex, dataTable, ...props}) => {
+    //получение индекса и айдишника, открытие таблицы для просмотра
     const openView = () => {
         openTable();
         getIndex(index, dataTable.id);

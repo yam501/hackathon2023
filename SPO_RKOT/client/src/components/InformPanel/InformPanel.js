@@ -3,11 +3,12 @@ import ButtonUI from '../ButtonUI';
 import './informPanel.css'
 import { Context } from '../..';
 const InformPanel = ({openTable, dataTable, ...props}) => {
-
+    const {externalTable} = useContext(Context)
     const [locationValue, setLocationValue] = useState(dataTable.district)
     const [pointValue, setPointValue] = useState(dataTable.place)
     const [startDateValue, setStartDateValue] = useState(dataTable.startDate)
     const [finishDateValue, setFinishDateValue] = useState(dataTable.endDate)
+    
 
     return (
         <div className='inform_panel'>
