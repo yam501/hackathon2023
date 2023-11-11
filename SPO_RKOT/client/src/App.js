@@ -34,9 +34,19 @@ function countCompanies(dataArray) {
     }
   }
 
-  console.log(companyCount)
   return companyCount;
 }
+
+const regionDictionary = {
+  "ЦЕНТРАЛЬНОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "ЦФО",
+  "СЕВЕРО-ЗАПАДНОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "СЗФО",
+  "ЮЖНОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "ЮФО",
+  "ПРИВОЛЖСКОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "ПФО",
+  "УРАЛЬСКОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "УФО",
+  "СИБИРСКОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "СФО",
+  "ДАЛЬНЕВОСТОЧНОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "ДФО",
+  "СЕВЕРО-КАВКАЗСКОМ ФЕДЕРАЛЬНОМ ОКРУГЕ": "СКФО"
+};
 
 
 function App() {
@@ -84,6 +94,7 @@ function App() {
 
   }
 
+  //Загрузка excel файла и разбиение его на json массивы
   const handleFile = async e => {
     const lenOfFiles = e.target.files.length
     for (let i = 0; i < lenOfFiles; i++) {
@@ -103,8 +114,12 @@ function App() {
 
   }
 
+  //Создание внешней таблицы
   const createExternalTable = async (jsonData) => {
-    let district = jsonData[7][0]?.substring(21)
+
+
+    let district = ((regionDictionary[jsonData[7][0]?.substring(21)]) != null) ? regionDictionary[jsonData[7][0]?.substring(21)] : jsonData[7][0]?.substring(21)
+
     let place = jsonData[13][0]?.substring(27)
     let startDate = pgFormatDate(jsonData[12][0]?.substring(30, 40))
     let endDate = pgFormatDate(jsonData[12][0]?.substring(44, 54))
@@ -114,6 +129,8 @@ function App() {
     await createInternalTable(jsonData, exTab.data.id)
   }
 
+
+  //Создание внутренней таблицы
   // Ввод даннхы в бд из таблицы, i - кол-во компаний 
   const createInternalTable = async (jsonData, exId) => {
     const externalTableId = exId
