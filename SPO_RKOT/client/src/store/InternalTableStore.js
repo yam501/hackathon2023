@@ -14,12 +14,12 @@ export default class InternalTableStore {
 
     async fetchAll() {
         const response = await InternalTableService.fetchAll()
-        this.setExternalTables(response)
+        this.setExternalTables(response.data)
     }
 
     async getAllByExternalTableId(externalTableId) {
         const response = await InternalTableService.getAllByExternalTableId(externalTableId)
-        this.setExternalTables(response)
+        this.setExternalTables(response.data)
     }
 
     async create(

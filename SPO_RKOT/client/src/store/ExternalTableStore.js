@@ -3,7 +3,7 @@ import ExternalTableService from "../service/ExternalTableService";
 
 export default class ExternalTableStore {
     constructor() {
-        this._externalTable = ['dsf']
+        this._externalTable = []
         makeAutoObservable(this)
     }
 
@@ -14,11 +14,11 @@ export default class ExternalTableStore {
 
     async fetchAll() {
         const response = await ExternalTableService.fetchAll()
-        this.setExternalTables(response)
+        this.setExternalTables(response.data)
     }
 
     async create(district, place, period) {
-        await ExternalTableService.create(district, place, period)
+        return await ExternalTableService.create(district, place, period)
     }
 
     get externalTable(){
