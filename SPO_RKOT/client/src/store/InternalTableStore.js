@@ -7,19 +7,19 @@ export default class InternalTableStore {
         makeAutoObservable(this)
     }
 
-    setExternalTables(internalTable) {
-        this.internalTable = internalTable
+    setInternalTables(internalTable) {
+        this._internalTable = internalTable
 
     }
 
     async fetchAll() {
         const response = await InternalTableService.fetchAll()
-        this.setExternalTables(response.data)
+        this.setInternalTables(response.data)
     }
 
     async getAllByExternalTableId(externalTableId) {
         const response = await InternalTableService.getAllByExternalTableId(externalTableId)
-        this.setExternalTables(response.data)
+        this.setInternalTables(response.data)
     }
 
     async create(
