@@ -81,8 +81,9 @@ function App() {
 
       //Статичные индексы, т.к. данные в excel находятся в одних и тех же строках
       //Отличаются лишь столбцы - сами компании, по ним мы и идем с помощью fori
-      let companyName = isNaN(jsonData[17][i]) ? jsonData[17][i] : console.log("null comapyName")
-      let voiceServiceNonAcessibility = isNaN(jsonData[18][i]) ? jsonData[18][i] : console.log("null voiceServiceNonAcessibility")
+
+      let companyName = jsonData[17][i]
+      let voiceServiceNonAcessibility = jsonData[18][i]
       let voiceServiceCutOffRatio = jsonData[19][i]
       let speechQualityonCallbasis = jsonData[20][i]
       let negativeMOSSamplesRatio = jsonData[21][i]
