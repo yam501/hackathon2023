@@ -23,7 +23,8 @@ const Table = ({openTable, show, ...props}) => {
                 <tr>
                     <th  className='table_column'>Федеральный округ(фо)</th>
                     <th className='table_column'>Место проведения контроля</th>
-                    <th className='table_column'>Период проведения контроля</th>
+                    <th className='table_column'>Дата начала</th>
+                    <th className='table_column'>Дата конца</th>
                     <th className='table_column'>Посмотреть</th>
                 </tr>
                 {externalTable.externalTable.map((item, i) => <TableItem openTable={openTable} getIndex={getIndex} index={i} dataTable={item}/>)}

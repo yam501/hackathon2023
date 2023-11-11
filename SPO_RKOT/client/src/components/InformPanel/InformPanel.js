@@ -6,8 +6,8 @@ const InformPanel = ({openTable, dataTable, ...props}) => {
 
     const [locationValue, setLocationValue] = useState(dataTable.district)
     const [pointValue, setPointValue] = useState(dataTable.place)
-    const [startDateValue, setStartDateValue] = useState(dataTable.period.slice(0, 11))
-    const [finishDateValue, setFinishDateValue] = useState(dataTable.period.slice(14))
+    const [startDateValue, setStartDateValue] = useState(dataTable.startDate)
+    const [finishDateValue, setFinishDateValue] = useState(dataTable.endDate)
 
     return (
         <div className='inform_panel'>
