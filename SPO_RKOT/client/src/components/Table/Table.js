@@ -12,6 +12,7 @@ import { observer } from 'mobx-react-lite';
 const Table = ({openTable, show, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
     const [tableRow, setTableRow] = useState([])
+    const [renderCol, setRenderCol] = useState([])
     const [check, setCheck] = useState(false)
     const [index, setIndex] = useState(null);
     const [id, setId] = useState(null);
@@ -21,16 +22,19 @@ const Table = ({openTable, show, ...props}) => {
     }
 
     const uplod = async () => {
-        id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true))
+        id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => setRenderCol(internalTable.internalTable))
+        
     }
     const dynamicParNames = () => {
-        setTableRow(Object.keys(internalTable.internalTable[0] ? internalTable.internalTable[0] : {}).splice(2))
+        setTableRow(Object.keys(renderCol[0] ? renderCol[0] : {}).splice(2))
     }
     useEffect(() => {
         uplod()
     }, [id])
 
-    console.log(tableRow)
+    useEffect(() => {
+        dynamicParNames()
+    }, [renderCol.length])
 
     return (
         <div>
@@ -47,9 +51,9 @@ const Table = ({openTable, show, ...props}) => {
                         {check && internalTable.internalTable.map((tableItem) => 
                         <Col>Значения</Col>)}    
                     </Row>
-                    {check && tableRow.map(item => {
+                    {tableRow.map(item => 
                         <TableHead item={item}/>
-                    })}
+                    )}
                 </>
                 :
                 <>
@@ -64,7 +68,7 @@ const Table = ({openTable, show, ...props}) => {
                 </>
             }
             </Container>
-            <ButtonUI onClick={() => dynamicParNames()}>Update</ButtonUI>
+            {/* <ButtonUI onClick={dynamicParNames}>Update</ButtonUI> */}
             {/* <table className='table'>
 
                 {show ?
