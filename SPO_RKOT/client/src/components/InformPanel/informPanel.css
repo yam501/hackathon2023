@@ -1,6 +1,5 @@
 .inform_panel {
-    margin: auto;
-    margin-top: 2vw;
+    margin: 2vw auto auto;
     height: 8vw;
     background-color: #406BD3;  
     border-radius: 7px; 
@@ -92,17 +91,14 @@
 
 .location_text:focus{
     outline: none;
-    border: 1px solid  black;
 }
 
 .date_date:focus{
     outline: none;
-    border: 1px solid  black;
 }
 
 .point_text:focus{
     outline: none;
-    border: 1px solid  black;
 }
 
 .point_text{
@@ -140,7 +136,7 @@
 }
 
 .date_date {
-    padding: 20px;
+    padding: 15px;
     width: 30%;
     height: 100%;
     border-radius: 7px;
@@ -149,6 +145,7 @@
     justify-content: center;
     align-items: center;
     border: 0;
+    font-size: calc(10px + 2 * (100vw/1903));
 }
 
 

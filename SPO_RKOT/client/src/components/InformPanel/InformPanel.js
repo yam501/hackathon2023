@@ -33,9 +33,9 @@ const InformPanel = ({openTable, dataTable, ...props}) => {
                     </div>
                     <div className='date_info_section'>
                         <span className='date_text'>С:</span>
-                        <input className='date_date' value={startDateValue} onChange={e => setStartDateValue(e.target.value)}/>
+                        <input className='date_date' type='date' value={startDateValue} onChange={e => setStartDateValue(e.target.value)}/>
                         <span className='date_text'>До:</span>
-                        <input className='date_date' value={finishDateValue} onChange={e => setFinishDateValue(e.target.value)}/>
+                        <input className='date_date' type='date'  value={finishDateValue} onChange={e => setFinishDateValue(e.target.value)}/>
                     </div>
                 </div>
                 <div className='btns_section'>

@@ -8,7 +8,8 @@ import TableHead from './TableHead';
 import {Context} from '../..';
 import InformPanel from '../InformPanel/InformPanel';
 import ButtonUI from '../ButtonUI';
-import { observer } from 'mobx-react-lite';
+import {observer} from 'mobx-react-lite';
+
 const Table = ({openTable, show, externalTableList, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
     const [tableRow, setTableRow] = useState([])
@@ -41,39 +42,52 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
 
 
     return (
-        <div className='container'>
-            {show && 
-                <InformPanel openTable={openTable} dataTable={externalTableList[index]}/>
+        <div className='container-fluid mb-2'>
+            {show &&
+                <Container>
+                    <InformPanel openTable={openTable} dataTable={externalTableList[index]}/>
+                </Container>
             }
 
-            <Container className='table_wrapper'>
-            {show === true ?
-                <>
-                    <Row>
-                        <Col>Параметры качества</Col>
-                        <Col>Требования к граничным значениям</Col>
-                        {check && internalTable.internalTable.map((tableItem) => 
-                        <Col>Значения</Col>)}    
-                    </Row>
-                    {tableRow.map((item, i) => 
-                        <TableHead  item={item} index={i}  dataTable={renderCol}/>
-                    )}
-                </>
-                :
-                <>
-                    <Row className='table_row_header'>
+            <div className='container-fluid table_wrapper'>
+                {show === true ?
+                    <>
+                        <Row className='table_row_header'>
+                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Параметры
+                                качества</Col>
+                            <Col
+                                className='table_column_header_dictionary d-flex align-items-center justify-content-center'>Требования
+                                к граничным значениям</Col>
+                            {check && internalTable.internalTable.map((tableItem) =>
+                                <Col
+                                    className='table_column_headers d-flex align-items-center justify-content-center'>Значения</Col>)}
+                        </Row>
+                        {tableRow.map((item, i) =>
+                            <TableHead item={item} index={i} dataTable={renderCol}/>
+                        )}
+                    </>
+                    :
+                    <>
+                        <Row className='table_row_header'>
                             <Col className='table_column_header d-flex align-items-center justify-content-center'>Федеральный
                                 округ</Col>
-                            <Col className='table_column_header_second d-flex align-items-center justify-content-center'>Место проведения
+                            <Col
+                                className='table_column_header_second d-flex align-items-center justify-content-center'>Место
+                                проведения
                                 контроля</Col>
-                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Дата начала</Col>
-                            <Col className='table_column_header_second d-flex align-items-center justify-content-center'>Дата конца</Col>
-                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Посмотреть</Col>
-                    </Row>
-                {externalTableList.map((item, i) => <TableItem openTable={openTable} getIndex={getIndex} index={i} dataTable={item}/>)}
-                </>
-            }
-            </Container>
+                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Дата
+                                начала</Col>
+                            <Col
+                                className='table_column_header_second d-flex align-items-center justify-content-center'>Дата
+                                конца</Col>
+                            <Col
+                                className='table_column_header d-flex align-items-center justify-content-center'>Посмотреть</Col>
+                        </Row>
+                        {externalTableList.map((item, i) => <TableItem openTable={openTable} getIndex={getIndex}
+                                                                       index={i} dataTable={item}/>)}
+                    </>
+                }
+            </div>
 
         </div>
     );

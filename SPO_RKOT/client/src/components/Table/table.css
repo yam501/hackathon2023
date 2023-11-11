@@ -26,8 +26,11 @@
 }
 
 .table_column_header{
-    background-color: #406BD3;
+    background-color: #1E3685;
     height: 100%;
+    min-width: 255.58px;
+    margin-right: 5px;
+    margin-left: 5px;
     border-radius: 7px;
 }
 
@@ -98,6 +101,7 @@
 }
 
 .table_wrapper{
+    margin: 0;
     border: 2px solid #1E3685;
     border-radius: 7px;
     padding: 20px;
@@ -110,4 +114,72 @@
     height: 50px;
     border-radius: 7px;
     color: white;
+}
+
+.table_column_headers{
+    background-color: #284A9D;
+    height: 100%;
+    border-radius: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.table_column_item{
+    background-color: #406BD3;
+    height: 100%;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 15px;
+    color: white;
+}
+
+.table_column_header_dictionary{
+    color: black;
+    height: 100%;
+    max-width: 255px;
+    border-radius: 7px;
+    margin-left: 7px;
+    margin-right: 7px;
+    background-color: #98b5ff;
+    text-align: center;
+}
+
+
+.table_column_dictionary{
+    background-color: #98b5ff;
+    height: 100%;
+    max-width: 200px;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-left: 35px;
+    margin-right: 25px;
+    color: black;
+}
+
+.table_column_values{
+    background-color: #406BD3;
+    height: 100%;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.table_column_input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 100%;
+    background-color: rgb(255,255,255,0.0);
+    border: 0;
+    color: white;
+    text-align: center;
+}
+
+.table_column_input:focus{
+    outline: none;
 }

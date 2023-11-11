@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 
 const TableHead = ({item, dataTable, index, ...props}) => {
     const [colValue, setColValue] = useState('');
+
+
     const [dictionary, setDictionary] = useState(
         {
             'voiceServiceNonAcessibility': 'Не более 5',
@@ -15,11 +17,15 @@ const TableHead = ({item, dataTable, index, ...props}) => {
         }
     )
     return (
-        <Row>
-        <Col>{item}</Col>
-        <Col>{dictionary[item]}</Col>
-        {dataTable.map(tableItem => <Col><input key={tableItem.id} value={colValue === '' ? tableItem[item] : colValue} onChange={e => setColValue(e.target.value)}/></Col>)}
-    </Row>
+        <Row className='table_row_headers'>
+            <Col className='table_column_item'>{item}</Col>
+            <Col className='table_column_dictionary'>{dictionary[item]}</Col>
+            {dataTable.map(tableItem => <Col className='table_column_values'>
+                <input className='table_column_input' key={tableItem.id}
+                        // Number(tableItem[item]).toFixed(2) вместо tableItem[item], будет округление
+                       value={colValue === '' ? tableItem[item] : colValue}
+                       onChange={e => setColValue(e.target.value)}/></Col>)}
+        </Row>
     );
 };
 
