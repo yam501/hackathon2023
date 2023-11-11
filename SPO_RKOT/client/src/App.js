@@ -60,8 +60,8 @@ function App() {
   return (
     <div className="App">
       <Header handleFile={handleFile} />
-      {openTable && <InformPanel openTable={open} />}
-      <Table openTable={open} show={openTable} dataTable={dataTable} />
+      { openTable && <InformPanel openTable={open}/>}
+      <Table openTable={open} show={openTable} />
 
 
     </div>
