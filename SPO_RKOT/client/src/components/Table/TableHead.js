@@ -3,10 +3,10 @@ import React from 'react';
 const TableHead = ({show, ...props}) => {
     return (
         <tr>
-            <td className='table_column'>Sdasdas</td>
-            <td className='table_column'>Scvxcxc</td>
-            <td className='table_column'>Edsvxcvxc</td>
-            <td className='table_column'>Scvxxcvx</td>
+            <td className='table_column'>Федеральный округ(ФО)</td>
+            <td className='table_column'>Место проведения контроля</td>
+            <td className='table_column'>Период проведения контроля</td>
+            <td className='table_column'>Просмотр</td>
             {show && <td className='table_column'>Dcvxcvcv</td>}
         </tr>
     );

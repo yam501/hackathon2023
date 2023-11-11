@@ -14,6 +14,7 @@ const TableItem = ({openTable, ...props}) => {
                 </span>
             </td>
         </tr>
+
     );
 };
 
