@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import ButtonUI from '../ButtonUI';
 
-const TableItem = ({openTable, ...props}) => {
-
+const TableItem = ({openTable, index, getIndex, dataTable, ...props}) => {
+    const openView = () => {
+        openTable();
+        getIndex(index);
+    }
     return (
         <tr>
-           <td className='table_column'>fsdfsdfsdfs</td> 
-           <td className='table_column'>fsdfsdfsdfsd</td> 
-           <td className='table_column'>fsdfsdfsdf</td> 
+           <td className='table_column'>{dataTable.district}</td> 
+           <td className='table_column'>{dataTable.place}</td> 
+           <td className='table_column'>{dataTable.period}</td> 
            <td className='table_column table_btn_box'>
                 <span className='table_column_btn'>
-                <ButtonUI className="table_item_btn" onClick={openTable}>Посмотреть</ButtonUI>
+                <ButtonUI className="table_item_btn" onClick={openView}>Посмотреть</ButtonUI>
                 </span>
             </td>
         </tr>

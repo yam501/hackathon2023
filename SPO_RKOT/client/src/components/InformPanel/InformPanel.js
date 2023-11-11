@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import ButtonUI from '../ButtonUI';
 import './informPanel.css'
-const InformPanel = ({openTable, ...props}) => {
+import { Context } from '../..';
+const InformPanel = ({openTable, dataTable, ...props}) => {
+
+    const [locationValue, setLocationValue] = useState(dataTable.district)
+    const [pointValue, setPointValue] = useState(dataTable.place)
+    const [startDateValue, setStartDateValue] = useState(dataTable.period.slice(0, 11))
+    const [finishDateValue, setFinishDateValue] = useState(dataTable.period.slice(14))
+
     return (
         <div className='inform_panel'>
             <div className='inform_panel_box'>
                 <div className='location_section_box'>
                     <div className='location_section'>
                         <span className='location_title'>Федеральный округ(ФО):</span>
-                        <span className='location_text'>Название</span>
+                        <input className='location_text' value={locationValue} onChange={e => setLocationValue(e.target.value)}/>
                     </div>
                     <div className='point_section'>
                         <span className='point_title'>Место проведения контроля:</span>
-                        <span className='point_text'>Область, город</span>
+                        <input className='point_text' value={pointValue} onChange={e => setPointValue(e.target.value)}/>
                     </div>
                 </div>
                 <div className='date_section_box'>
@@ -21,9 +28,9 @@ const InformPanel = ({openTable, ...props}) => {
                     </div>
                     <div className='date_info_section'>
                         <span className='date_text'>С:</span>
-                        <span className='date_date'>01.01.2001</span>
+                        <input className='date_date' value={startDateValue} onChange={e => setStartDateValue(e.target.value)}/>
                         <span className='date_text'>До:</span>
-                        <span className='date_date'>01.01.2002</span>
+                        <input className='date_date' value={finishDateValue} onChange={e => setFinishDateValue(e.target.value)}/>
                     </div>
                 </div>
                 <div className='btns_section'>
