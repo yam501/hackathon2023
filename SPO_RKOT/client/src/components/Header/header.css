@@ -31,7 +31,7 @@
 }
 
 .header_btn_box {
-    width: 24%;
+    width: 30%;
     height: 2.3vw;
     display: flex;
     align-items: center;
@@ -39,7 +39,7 @@
 }
 
 .header_btn {
-    width: 45%;
+    width: 30%;
     height: 100%;
     background-color: #284A9D;
     border: 1px solid #ECF2F6;
