@@ -29,6 +29,7 @@ function App() {
 
   const getDataTables = async () => {
     await externalTable.fetchAll()
+    await internalTable.fetchAll()
   }
 
   const handleFile = async e => {
@@ -56,15 +57,13 @@ function App() {
     let place = jsonData[13][0]?.substring(27)
     let startDate = jsonData[12][0]?.substring(30,40)
     let endDate = jsonData[12][0]?.substring(44,54)
-    // let date = new Date(endDate)
-    // let datevo = new Date(date.getDay(), date.getMonth(), date.getFullYear())
-    // console.log(datevo)
+ 
     let exTab = await externalTable.create(district, place, startDate, endDate)
 
     await createInternalTable(jsonData, exTab.data.id)
   }
 
- // Ввод даннхы в бд из таблицы, i - кол-во компаний 
+  // Ввод даннхы в бд из таблицы, i - кол-во компаний 
   const createInternalTable = async (jsonData, exId) => {
     const externalTableId = exId
     const lenOfCompany = jsonData[17].length - 2

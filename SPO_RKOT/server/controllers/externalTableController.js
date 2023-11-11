@@ -7,7 +7,10 @@ class ExternalTableController {
     async create(req, res, next) {
         try {
             const { district, place, startDate, endDate } = req.body
+            console.log("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
             const table = await ExternalTable.create({ district, place, startDate, endDate })
+            console.log("dddddddddddddddddddddddddddddddfdsfdfsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsddddddd")
+
             return res.json(table)
         } catch (e) {
             next(ApiError.badRequest(e.message))
