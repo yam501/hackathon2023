@@ -10,6 +10,16 @@ import { Context } from '.';
 var XLSX = require("xlsx");
 
 
+//Преобразование строки даты в тип даты для postgreSQL: 17.02.2015 -> 2015.02.17
+function pgFormatDate(inputDateString) {
+  // Разделение строки на компоненты даты
+  const [day, month, year] = inputDateString.split('.');
+
+  // Форматирование строки с преобразованной датой
+  const formattedDate = `${year}.${month}.${day}`;
+
+  return formattedDate;
+}
 
 function App() {
 
@@ -54,21 +64,22 @@ function App() {
   const createExternalTable = async (jsonData) => {
     let district = jsonData[7][0]?.substring(21)
     let place = jsonData[13][0]?.substring(27)
-    let startDate = jsonData[12][0]?.substring(30,40)
-    let endDate = jsonData[12][0]?.substring(44,54)
-    // let date = new Date(endDate)
-    // let datevo = new Date(date.getDay(), date.getMonth(), date.getFullYear())
-    // console.log(datevo)
+    let startDate = pgFormatDate(jsonData[12][0]?.substring(30, 40))
+    let endDate = pgFormatDate(jsonData[12][0]?.substring(44, 54))
+
     let exTab = await externalTable.create(district, place, startDate, endDate)
 
     await createInternalTable(jsonData, exTab.data.id)
   }
 
- // Ввод даннхы в бд из таблицы, i - кол-во компаний 
+  // Ввод даннхы в бд из таблицы, i - кол-во компаний 
   const createInternalTable = async (jsonData, exId) => {
     const externalTableId = exId
     const lenOfCompany = jsonData[17].length - 2
-    for (let i = 2; i <= lenOfCompany; i++) {
+    for (let i = 2; i <= lenOfCompany; i++) {           //Определениен количества компаний
+
+      //Статичные индексы, т.к. данные в excel находятся в одних и тех же строках
+      //Отличаются лишь столбцы - сами компании, по ним мы и идем с помощью fori
       let companyName = jsonData[17][i]
       let voiceServiceNonAcessibility = jsonData[18][i]
       let voiceServiceCutOffRatio = jsonData[19][i]

@@ -7,8 +7,8 @@ const ExternalTable = sequelize.define('externalTable', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     district: { type: DataTypes.STRING, allowNull: true },
     place: { type: DataTypes.STRING, allowNull: true },
-    startDate: { type: DataTypes.STRING, allowNull: true },
-    endDate: { type: DataTypes.STRING, allowNull: true }
+    startDate: { type: DataTypes.DATEONLY, allowNull: true },
+    endDate: { type: DataTypes.DATEONLY, allowNull: true }
 
 
 
