@@ -7,7 +7,9 @@ import TableItem from './TableItem';
 import TableHead from './TableHead';
 import { Context } from '../..';
 import InformPanel from '../InformPanel/InformPanel';
-const Table = ({openTable, externalTableList, show, ...props}) => {
+import ButtonUI from '../ButtonUI';
+import { observer } from 'mobx-react-lite';
+const Table = ({openTable, show, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
     const [tableRow, setTableRow] = useState([])
     const [check, setCheck] = useState(false)
@@ -19,24 +21,21 @@ const Table = ({openTable, externalTableList, show, ...props}) => {
     }
 
     const uplod = async () => {
-        id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => dynamicParNames())
+        id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true))
     }
     const dynamicParNames = () => {
-        setTableRow(() => {
-            const newArr = Object.keys(internalTable.internalTable[0]).splice(2)
-            return newArr;
-        })
+        setTableRow(Object.keys(internalTable.internalTable[0] ? internalTable.internalTable[0] : {}).splice(2))
     }
     useEffect(() => {
         uplod()
-        
     }, [id])
+
     console.log(tableRow)
 
     return (
         <div>
-            {show &&
-                <InformPanel openTable={openTable} dataTable={externalTable.externalTable[index]} />
+            {show && 
+                <InformPanel openTable={openTable} dataTable={externalTable.externalTable[index]}/>
             }
 
             <Container>
@@ -49,13 +48,7 @@ const Table = ({openTable, externalTableList, show, ...props}) => {
                         <Col>Значения</Col>)}    
                     </Row>
                     {check && tableRow.map(item => {
-                        <Row>
-                            <Col>{item}</Col>
-                            <Col></Col>
-                            <Col></Col>
-                            <Col></Col>
-                            <Col></Col>
-                        </Row>
+                        <TableHead item={item}/>
                     })}
                 </>
                 :
@@ -67,10 +60,11 @@ const Table = ({openTable, externalTableList, show, ...props}) => {
                     <Col>Дата конца</Col>
                     <Col>Посмотреть</Col>
                 </Row>
-                {externalTableList.map((item, i) => <TableItem key={item.id} openTable={openTable}  getIndex={getIndex} index={i} dataTable={item}/>)}
+                {externalTable.externalTable.map((item, i) => <TableItem openTable={openTable}  getIndex={getIndex} index={i} dataTable={item}/>)}
                 </>
             }
             </Container>
+            <ButtonUI onClick={() => dynamicParNames()}>Update</ButtonUI>
             {/* <table className='table'>
 
                 {show ?
@@ -92,4 +86,4 @@ const Table = ({openTable, externalTableList, show, ...props}) => {
     );
 };
 
-export default Table;
+export default observer(Table);

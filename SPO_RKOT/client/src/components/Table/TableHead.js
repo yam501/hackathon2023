@@ -25,8 +25,12 @@ const TableHead = ({show, dataTable, dependArray, index, ...props}) => {
 
     return (
         <Row>
-            
-        </Row>
+        <Col>{props.item}</Col>
+        <Col></Col>
+        <Col></Col>
+        <Col></Col>
+        <Col></Col>
+    </Row>
     );
 };
 
