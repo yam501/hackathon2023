@@ -19,7 +19,7 @@ const InformPanel = ({openTable, dataTable, ...props}) => {
             <div className='inform_panel_box'>
                 <div className='location_section_box'>
                     <div className='location_section'>
-                        <span className='location_title'>Федеральный округ(ФО):</span>
+                        <span className='location_title'>Федеральный округ:</span>
                         <input className='location_text' value={locationValue} onChange={e => setLocationValue(e.target.value)}/>
                     </div>
                     <div className='point_section'>

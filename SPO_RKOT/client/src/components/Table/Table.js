@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './table.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import TableItem from './TableItem';
 import TableHead from './TableHead';
-import { Context } from '../..';
+import {Context} from '../..';
 import InformPanel from '../InformPanel/InformPanel';
 import ButtonUI from '../ButtonUI';
 import { observer } from 'mobx-react-lite';
@@ -17,7 +17,6 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
     const [check, setCheck] = useState(false)
     const [index, setIndex] = useState(null);
     const [id, setId] = useState(null);
-    //Получение индекса и айдишника из внешней таблицы
     const getIndex = (i, id) => {
         setIndex(i)
         setId(id)
@@ -27,9 +26,9 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
     //получение данных для отрисовки таблиц с бд
     const uplod = async () => {
         id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => setRenderCol(internalTable.internalTable))
-        
+
     }
-    //конвертация в массив ключей объекта
+
     const dynamicParNames = () => {
         setTableRow(Object.keys(renderCol[0] ? renderCol[0] : {}).splice(2))
     }
@@ -43,12 +42,12 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
 
 
     return (
-        <div>
+        <div className='container'>
             {show && 
                 <InformPanel openTable={openTable} dataTable={externalTableList[index]}/>
             }
 
-            <Container>
+            <Container className='table_wrapper'>
             {show ?
                 <>
                     <Row>
@@ -63,13 +62,15 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
                 </>
                 :
                 <>
-                <Row>
-                    <Col>Федеральный округ(фо)</Col>
-                    <Col>Место проведения контроля</Col>
-                    <Col>Дата начала</Col>
-                    <Col>Дата конца</Col>
-                    <Col>Посмотреть</Col>
-                </Row>
+                    <Row className='table_row_header'>
+                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Федеральный
+                                округ</Col>
+                            <Col className='table_column_header_second d-flex align-items-center justify-content-center'>Место проведения
+                                контроля</Col>
+                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Дата начала</Col>
+                            <Col className='table_column_header_second d-flex align-items-center justify-content-center'>Дата конца</Col>
+                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Посмотреть</Col>
+                    </Row>
                 {externalTableList.map((item, i) => <TableItem openTable={openTable} getIndex={getIndex} index={i} dataTable={item}/>)}
                 </>
             }
