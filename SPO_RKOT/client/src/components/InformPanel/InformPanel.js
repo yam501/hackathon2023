@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonUI from '../ButtonUI';
 import './informPanel.css'
-const InformPanel = ({...props}) => {
+const InformPanel = ({openTable, ...props}) => {
     return (
         <div className='inform_panel'>
             <div className='inform_panel_box'>
@@ -28,7 +28,7 @@ const InformPanel = ({...props}) => {
                 </div>
                 <div className='btns_section'>
                     <ButtonUI className='inform_panel_btn'>Сохранить</ButtonUI>
-                    <ButtonUI className='inform_panel_btn'>Отмена</ButtonUI>
+                    <ButtonUI onClick={openTable} className='inform_panel_btn'>Отмена</ButtonUI>
                 </div>
             </div>
         </div>
