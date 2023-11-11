@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const TableHead = ({item, ...props}) => {
+const TableHead = ({item, dataTable, index, ...props}) => {
     // const [parNames, setParNames] = useState([])
     // const [values, setValues] = useState([])
     // const [tableRow, setTableRow] = useState([]);
@@ -27,9 +27,7 @@ const TableHead = ({item, ...props}) => {
         <Row>
         <Col>{item}</Col>
         <Col></Col>
-        <Col>fsdf</Col>
-        <Col>fsdf</Col>
-        <Col>fdsd</Col>
+        {dataTable.map(tableItem => <Col>{tableItem[item]}</Col>)}
     </Row>
     );
 };

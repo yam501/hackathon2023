@@ -51,8 +51,8 @@ const Table = ({openTable, show, ...props}) => {
                         {check && internalTable.internalTable.map((tableItem) => 
                         <Col>Значения</Col>)}    
                     </Row>
-                    {tableRow.map(item => 
-                        <TableHead item={item}/>
+                    {tableRow.map((item, i) => 
+                        <TableHead item={item} index={i} dataTable={renderCol}/>
                     )}
                 </>
                 :
