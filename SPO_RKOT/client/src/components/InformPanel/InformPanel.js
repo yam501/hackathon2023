@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonUI from './ButtonUI';
+import ButtonUI from '../ButtonUI';
 import './informPanel.css'
 const InformPanel = ({...props}) => {
     return (

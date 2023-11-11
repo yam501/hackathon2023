@@ -1,6 +1,6 @@
 import './app.css';
 import Header from './components/Header/Header';
-import InformPanel from './components/InformPanel';
+import InformPanel from './components/InformPanel/InformPanel';
 import Table from './components/Table/Table';
 
 var XLSX = require("xlsx");
