@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 import './app.css';
 import Header from './components/Header/Header';
 import InformPanel from './components/InformPanel/InformPanel';
@@ -23,13 +23,37 @@ function pgFormatDate(inputDateString) {
 
 function App() {
 
-  const { externalTable } = useContext(Context)
-  const { internalTable } = useContext(Context)
+  const { externalTable, internalTable } = useContext(Context)
+
 
 
   const [openTable, setOpenTable] = useState(false)
   const open = () => setOpenTable(!openTable);
-  const [dataTable, setDataTable] = useState([]);
+
+
+  const [externalTableList, setExternalTableList] = useState([]);
+
+  const [federalOkr, setFederalOkr] = useState('')
+  const [place, setPlace] = useState('')
+
+  const [sortFiltr, setSortFiltr] = useState('')
+
+  const [date, setDate] = useState('')
+
+  const sortedExternalTable = useMemo(() => {
+    if (sortFiltr == 1) return [...externalTableList].sort((a, b) => a['startDate'].localeCompare(b['startDate']))
+    if (sortFiltr == 2) return [...externalTableList].sort((a, b) => b['startDate'].localeCompare(a['startDate']))
+    return externalTableList
+  }, [sortFiltr, place])
+
+
+  const searchedExternalTable = useMemo(() => {
+    return sortedExternalTable.filter(data => data.district.toLowerCase().includes(federalOkr.toLowerCase()) & data.place.toLowerCase().includes(place.toLowerCase()) &
+      (data.startDate.includes(date)) || data.endDate.includes(date))
+  }, [federalOkr, place, date, sortedExternalTable])
+
+
+
 
 
   useEffect(() => {
@@ -39,7 +63,8 @@ function App() {
 
   const getDataTables = async () => {
     await externalTable.fetchAll()
-    await internalTable.fetchAll()
+    setExternalTableList(externalTable.externalTable)
+
   }
 
   const handleFile = async e => {
@@ -55,7 +80,6 @@ function App() {
         header: 1,
         defval: ""
       })
-      setDataTable(jsonData)
       await createExternalTable(jsonData)
       console.log(jsonData)
     }
@@ -118,9 +142,21 @@ function App() {
   return (
     <div className="App">
       <Header handleFile={handleFile} />
-
-      <Table openTable={open} show={openTable} />
-      <button onClick={() => console.log(externalTable.externalTable)}> ЖМИ МЕНЯ</button>
+      <div>
+        <label for='okr'> ФО </label>
+        <input id='okr' value={federalOkr} onChange={e => setFederalOkr(e.target.value)}></input>
+        <label for='plc'> Город </label>
+        <input id='plc' value={place} onChange={e => setPlace(e.target.value)}></input>
+        <label for='sd'> Дата 1 </label>
+        <input id='sd' value={date} onChange={e => setDate(e.target.value)}></input>
+        <select onChange={e => setSortFiltr(e.target.value)}>
+          <option value={''}>Выберите тип сортировки</option>
+          <option value={1}>По возрастанию</option>
+          <option value={2}>По убыванию</option>
+        </select>
+      </div>
+      <Table openTable={open} show={openTable} externalTableList={searchedExternalTable.length > 0 ? searchedExternalTable : externalTableList} />
+      <button onClick={() => console.log(place, federalOkr)}> ЖМИ МЕНЯ</button>
 
     </div>
   );
