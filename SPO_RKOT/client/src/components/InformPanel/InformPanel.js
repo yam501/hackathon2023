@@ -8,7 +8,11 @@ const InformPanel = ({openTable, dataTable, ...props}) => {
     const [pointValue, setPointValue] = useState(dataTable.place)
     const [startDateValue, setStartDateValue] = useState(dataTable.startDate)
     const [finishDateValue, setFinishDateValue] = useState(dataTable.endDate)
-    
+
+    const changeDataById = () => {
+        externalTable.changeDataById(dataTable.id, locationValue, pointValue, startDateValue, finishDateValue)
+    }
+
 
     return (
         <div className='inform_panel'>
@@ -35,7 +39,7 @@ const InformPanel = ({openTable, dataTable, ...props}) => {
                     </div>
                 </div>
                 <div className='btns_section'>
-                    <ButtonUI className='inform_panel_btn'>Сохранить</ButtonUI>
+                    <ButtonUI className='inform_panel_btn' onClick={changeDataById}>Сохранить</ButtonUI>
                     <ButtonUI onClick={openTable} className='inform_panel_btn'>Отмена</ButtonUI>
                 </div>
             </div>

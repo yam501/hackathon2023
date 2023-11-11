@@ -9,10 +9,11 @@ import { Context } from '../..';
 import InformPanel from '../InformPanel/InformPanel';
 import ButtonUI from '../ButtonUI';
 import { observer } from 'mobx-react-lite';
-const Table = ({openTable, show, ...props}) => {
+const Table = ({openTable, show, externalTableList, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
     const [tableRow, setTableRow] = useState([])
     const [renderCol, setRenderCol] = useState([])
+    const [mainTable, setMainTable] = useState([])
     const [check, setCheck] = useState(false)
     const [index, setIndex] = useState(null);
     const [id, setId] = useState(null);
@@ -21,6 +22,7 @@ const Table = ({openTable, show, ...props}) => {
         setIndex(i)
         setId(id)
     }
+
 
     //получение данных для отрисовки таблиц с бд
     const uplod = async () => {
@@ -39,10 +41,11 @@ const Table = ({openTable, show, ...props}) => {
         dynamicParNames()
     }, [renderCol.length])
 
+
     return (
         <div>
             {show && 
-                <InformPanel openTable={openTable} dataTable={externalTable.externalTable[index]}/>
+                <InformPanel openTable={openTable} dataTable={externalTableList[index]}/>
             }
 
             <Container>
@@ -55,7 +58,7 @@ const Table = ({openTable, show, ...props}) => {
                         <Col>Значения</Col>)}    
                     </Row>
                     {tableRow.map((item, i) => 
-                        <TableHead item={item} index={i} dataTable={renderCol}/>
+                        <TableHead key={id} item={item} index={i}  dataTable={renderCol}/>
                     )}
                 </>
                 :
@@ -67,7 +70,7 @@ const Table = ({openTable, show, ...props}) => {
                     <Col>Дата конца</Col>
                     <Col>Посмотреть</Col>
                 </Row>
-                {externalTable.externalTable.map((item, i) => <TableItem openTable={openTable}  getIndex={getIndex} index={i} dataTable={item}/>)}
+                {externalTableList.map((item, i) => <TableItem openTable={openTable} getIndex={getIndex} index={i} dataTable={item}/>)}
                 </>
             }
             </Container>

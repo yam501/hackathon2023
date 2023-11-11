@@ -10,6 +10,7 @@ router.post('/getAll', externalTableController.getAll)
 
 router.post('/delete', externalTableController.destroy)
 
+router.put('/changeDataById', externalTableController.changeDataById)
 
 
 

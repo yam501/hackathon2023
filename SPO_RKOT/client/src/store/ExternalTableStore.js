@@ -17,6 +17,11 @@ export default class ExternalTableStore {
         this.setExternalTables(response.data)
     }
 
+    async changeDataById(id, district, place, startDate, endDate) {
+        const response = await ExternalTableService.changeDataById(id, district, place, startDate, endDate)
+        this.setExternalTables(response.data)
+    }
+
     async create(district, place, startDate, endDate) {
         console.log("Z nen")
         return await ExternalTableService.create(district, place, startDate, endDate)

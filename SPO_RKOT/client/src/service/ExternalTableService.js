@@ -11,8 +11,11 @@ const ExternalTableService = {
 
     async delete(id) {
         return new Promise((resolve) => resolve($host.post('api/externalTable/delete', {id})))
-    }
+    },
 
+    async changeDataById(id, district, place, startDate, endDate) {
+        return new Promise((resolve) => resolve($host.put('api/externalTable/changeDataById', {id, district, place, startDate, endDate})))
+    }
 }
 
 export default ExternalTableService;

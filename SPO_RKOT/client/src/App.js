@@ -79,8 +79,7 @@ function App() {
 
 
   const getDataTables = async () => {
-    await externalTable.fetchAll()
-    setExternalTableList(externalTable.externalTable)
+    await externalTable.fetchAll().then(res => setExternalTableList(externalTable.externalTable))
 
   }
 
@@ -174,7 +173,7 @@ function App() {
         </select>
       </div>
       <Table openTable={open} show={openTable} externalTableList={searchedExternalTable.length > 0 ? searchedExternalTable : externalTableList} />
-      <button onClick={() => console.log(place, federalOkr)}> ЖМИ МЕНЯ</button>
+      {/* <button onClick={() => console.log(place, federalOkr)}> ЖМИ МЕНЯ</button> */}
 
     </div>
   );
