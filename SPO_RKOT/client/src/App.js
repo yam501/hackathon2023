@@ -25,26 +25,30 @@ function App() {
   useEffect(() => {
     getDataTables()
   }, [externalTable.externalTable.length])
-  
 
-  const getDataTables = async () =>{
+
+  const getDataTables = async () => {
     await externalTable.fetchAll()
   }
-  
-  const handleFile = async e => {
-    const file = e.target.files[0]
-    if (!file.name.includes('.xlsx') || !file.name.includes('.xls')) return console.log('выбран не тот тип файлов')
-    const data = await file.arrayBuffer();
-    const workbook = XLSX.readFile(data, { sheetRows: 50 })
 
-    const worksheet = workbook.Sheets[workbook.SheetNames[0]]
-    const jsonData = XLSX.utils.sheet_to_json(worksheet, {
-      header: 1,
-      defval: ""
-    })
-    setDataTable(jsonData)
-    await createExternalTable(jsonData)
-    console.log(jsonData)
+  const handleFile = async e => {
+    const lenOfFiles = e.target.files.length
+    for (let i = 0; i < lenOfFiles; i++) {
+      const file = e.target.files[i]
+      if (!file.name.includes('.xlsx') || !file.name.includes('.xls')) return console.log('выбран не тот тип файлов')
+      const data = await file.arrayBuffer();
+      const workbook = XLSX.readFile(data, { sheetRows: 50 })
+
+      const worksheet = workbook.Sheets[workbook.SheetNames[0]]
+      const jsonData = XLSX.utils.sheet_to_json(worksheet, {
+        header: 1,
+        defval: ""
+      })
+      setDataTable(jsonData)
+      await createExternalTable(jsonData)
+      console.log(jsonData)
+    }
+
   }
 
   const createExternalTable = async (jsonData) => {
@@ -52,7 +56,7 @@ function App() {
     let place = jsonData[13][0]?.substring(27)
     let time = jsonData[12][0]?.substring(30)
     let exTab = await externalTable.create(district, place, time)
-    
+
     await createInternalTable(jsonData, exTab.data.id)
   }
 
@@ -60,7 +64,7 @@ function App() {
   const createInternalTable = async (jsonData, exId) => {
     const externalTableId = exId
     const lenOfCompany = jsonData[17].length - 2
-    for(let i = 2; i<=lenOfCompany; i++ ){
+    for (let i = 2; i <= lenOfCompany; i++) {
       let companyName = jsonData[17][i]
       let voiceServiceNonAcessibility = jsonData[18][i]
       let voiceServiceCutOffRatio = jsonData[19][i]
@@ -94,14 +98,14 @@ function App() {
         quantitySessions)
     }
 
-  
+
     console.log(lenOfCompany)
   }
 
   return (
     <div className="App">
       <Header handleFile={handleFile} />
- 
+
       <Table openTable={open} show={openTable} />
       <button onClick={() => console.log(externalTable.externalTable)}> ЖМИ МЕНЯ</button>
 
@@ -109,4 +113,4 @@ function App() {
   );
 }
 
-export default observer(App) ;
+export default observer(App);
