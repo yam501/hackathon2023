@@ -53,7 +53,7 @@ function App() {
 
 
     const [openTable, setOpenTable] = useState(false)
-    const open = () => setOpenTable(!openTable);
+    const open = (bool) => {setOpenTable(bool)};
 
 
     const [externalTableList, setExternalTableList] = useState([]);
@@ -172,7 +172,7 @@ function App() {
     return (
         <div>
             <Header handleFile={handleFile}/>
-            <div className='mt-2 container search_panel_wrapper'>
+            {!openTable && <div className='mt-2 container search_panel_wrapper'>
                 <h1 className='mt-5 d-flex align-items-center justify-content-center'>
                     Поисковая панель
                 </h1>
@@ -192,10 +192,10 @@ function App() {
                         <option value={2}>По убыванию</option>
                     </select>
                 </div>
-            </div>
+            </div>}
             <Table openTable={open} show={openTable}
                    externalTableList={searchedExternalTable.length > 0 ? searchedExternalTable : externalTableList}/>
-            <button onClick={() => console.log(place, federalOkr)}> ЖМИ МЕНЯ</button>
+            {/* <button onClick={() => console.log(place, federalOkr)}> ЖМИ МЕНЯ</button> */}
 
         </div>
     );

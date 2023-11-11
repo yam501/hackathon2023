@@ -12,10 +12,10 @@ const InformPanel = ({openTable, dataTable, ...props}) => {
     const changeDataById = () => {
         externalTable.changeDataById(dataTable.id, locationValue, pointValue, startDateValue, finishDateValue)
     }
-
+    
 
     return (
-        <div className='inform_panel'>
+        <div className='inform_panel mb-3'>
             <div className='inform_panel_box'>
                 <div className='location_section_box'>
                     <div className='location_section'>
@@ -40,7 +40,7 @@ const InformPanel = ({openTable, dataTable, ...props}) => {
                 </div>
                 <div className='btns_section'>
                     <ButtonUI className='inform_panel_btn' onClick={changeDataById}>Сохранить</ButtonUI>
-                    <ButtonUI onClick={openTable} className='inform_panel_btn'>Отмена</ButtonUI>
+                    <ButtonUI onClick={() => openTable(false)} className='inform_panel_btn'>Отмена</ButtonUI>
                 </div>
             </div>
         </div>

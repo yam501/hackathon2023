@@ -22,7 +22,6 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
         setId(id)
     }
 
-
     //получение данных для отрисовки таблиц с бд
     const uplod = async () => {
         id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => setRenderCol(internalTable.internalTable))
@@ -48,7 +47,7 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
             }
 
             <Container className='table_wrapper'>
-            {show ?
+            {show === true ?
                 <>
                     <Row>
                         <Col>Параметры качества</Col>
@@ -57,7 +56,7 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
                         <Col>Значения</Col>)}    
                     </Row>
                     {tableRow.map((item, i) => 
-                        <TableHead key={id} item={item} index={i}  dataTable={renderCol}/>
+                        <TableHead  item={item} index={i}  dataTable={renderCol}/>
                     )}
                 </>
                 :
@@ -75,24 +74,7 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
                 </>
             }
             </Container>
-            {/* <ButtonUI onClick={dynamicParNames}>Update</ButtonUI> */}
-            {/* <table className='table'>
 
-                {show ?
-                check && internalTable.internalTable.map((tableItem, i) => <TableHead show={show} index={i} dependArray={internalTable.internalTable} dataTable={tableItem} />)
-                :
-                <>
-                <tr>
-                    <th  className='table_column'>Федеральный округ(фо)</th>
-                    <th className='table_column'>Место проведения контроля</th>
-                    <th className='table_column'>Дата начала</th>
-                    <th className='table_column'>Дата конца</th>
-                    <th className='table_column'>Посмотреть</th>
-                </tr>
-                {externalTable.externalTable.map((item, i) => <TableItem openTable={openTable}  getIndex={getIndex} index={i} dataTable={item}/>)}
-                </>
-                }
-            </table> */}
         </div>
     );
 };

@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/esm/Col';
 
 const TableItem = ({openTable, index, getIndex, dataTable, ...props}) => {
     const openView = () => {
-        openTable();
+        openTable(true);
         getIndex(index, dataTable.id);
     }
     return (
