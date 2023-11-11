@@ -25,7 +25,7 @@ const Header = ({handleFile, ...props}) => {
                 </div>
                 <div className='header_btn_box'>
                 <ButtonUI className="header_btn">
-                    <input id='file' className='table_upload_file' type='file' onChange={e => handleFile(e)} />
+                    <input id='file' className='table_upload_file' type='file' onChange={e => handleFile(e)} accept=".xlsx, .xls"/>
                     <label for='file' className='table_upload_btn'>Загрузить</label>
                 </ButtonUI>
                     <ButtonUI className='header_btn'>Обновить</ButtonUI>
