@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ButtonUI from '../ButtonUI';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -10,17 +10,23 @@ const TableItem = ({openTable, index, getIndex, dataTable, ...props}) => {
         getIndex(index, dataTable.id);
     }
     return (
-        <Row>
-           <Col className='table_column'>{dataTable.district}</Col> 
-           <Col className='table_column'>{dataTable.place}</Col> 
-           <Col className='table_column'> {dataTable.startDate}</Col> 
-           <Col className='table_column'> {dataTable.endDate}</Col> 
-           <Col className='table_column table_btn_box'>
+        <>
+            <Row className='mb-2'>
+                <Col className='table_column d-flex align-items-center justify-content-center'
+                     style={{textAlign: "center", marginLeft: '7px'}}>{dataTable.district}</Col>
+                <Col
+                    className='table_column_second d-flex align-items-center justify-content-center'>{dataTable.place}</Col>
+                <Col
+                    className='table_column d-flex align-items-center justify-content-center'> {dataTable.startDate}</Col>
+                <Col
+                    className='table_column_second d-flex align-items-center justify-content-center'> {dataTable.endDate}</Col>
+                <Col className='table_btn_box'>
                 <span className='table_column_btn'>
                 <ButtonUI className="table_item_btn" onClick={openView}>Посмотреть</ButtonUI>
                 </span>
-            </Col>
-        </Row>
+                </Col>
+            </Row>
+        </>
 
     );
 };

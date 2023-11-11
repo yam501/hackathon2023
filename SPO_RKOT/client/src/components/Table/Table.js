@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './table.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import TableItem from './TableItem';
 import TableHead from './TableHead';
-import { Context } from '../..';
+import {Context} from '../..';
 import InformPanel from '../InformPanel/InformPanel';
-import ButtonUI from '../ButtonUI';
-import { observer } from 'mobx-react-lite';
+import {observer} from 'mobx-react-lite';
+
 const Table = ({openTable, show, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
     const [tableRow, setTableRow] = useState([])
@@ -23,8 +23,9 @@ const Table = ({openTable, show, ...props}) => {
 
     const uplod = async () => {
         id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => setRenderCol(internalTable.internalTable))
-        
+
     }
+
     const dynamicParNames = () => {
         setTableRow(Object.keys(renderCol[0] ? renderCol[0] : {}).splice(2))
     }
@@ -37,36 +38,41 @@ const Table = ({openTable, show, ...props}) => {
     }, [renderCol.length])
 
     return (
-        <div>
-            {show && 
+        <div className='container'>
+            {show &&
                 <InformPanel openTable={openTable} dataTable={externalTable.externalTable[index]}/>
             }
 
-            <Container>
-            {show ?
-                <>
-                    <Row>
-                        <Col>Параметры качества</Col>
-                        <Col>Требования к граничным значениям</Col>
-                        {check && internalTable.internalTable.map((tableItem) => 
-                        <Col>Значения</Col>)}    
-                    </Row>
-                    {tableRow.map(item => 
-                        <TableHead item={item}/>
-                    )}
-                </>
-                :
-                <>
-                <Row>
-                    <Col>Федеральный округ(фо)</Col>
-                    <Col>Место проведения контроля</Col>
-                    <Col>Дата начала</Col>
-                    <Col>Дата конца</Col>
-                    <Col>Посмотреть</Col>
-                </Row>
-                {externalTable.externalTable.map((item, i) => <TableItem openTable={openTable}  getIndex={getIndex} index={i} dataTable={item}/>)}
-                </>
-            }
+            <Container className='table_wrapper'>
+                {show ?
+                    <>
+                        <Row>
+                            <Col>Параметры качества</Col>
+                            <Col>Требования к граничным значениям</Col>
+                            {check && internalTable.internalTable.map((tableItem) =>
+                                <Col>Значения</Col>)}
+                        </Row>
+
+                        {tableRow.map(item =>
+                            <TableHead item={item}/>
+                        )}
+                    </>
+                    :
+                    <>
+                        <Row className='table_row_header'>
+                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Федеральный
+                                округ</Col>
+                            <Col className='table_column_header_second d-flex align-items-center justify-content-center'>Место проведения
+                                контроля</Col>
+                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Дата начала</Col>
+                            <Col className='table_column_header_second d-flex align-items-center justify-content-center'>Дата конца</Col>
+                            <Col className='table_column_header d-flex align-items-center justify-content-center'>Посмотреть</Col>
+                        </Row>
+                        {externalTable.externalTable.map((item, i) => <TableItem openTable={openTable}
+                                                                                 getIndex={getIndex} index={i}
+                                                                                 dataTable={item}/>)}
+                    </>
+                }
             </Container>
             {/* <ButtonUI onClick={dynamicParNames}>Update</ButtonUI> */}
             {/* <table className='table'>

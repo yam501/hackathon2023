@@ -1,5 +1,5 @@
-import { keys } from 'mobx';
-import React, { useEffect, useState } from 'react';
+import {keys} from 'mobx';
+import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -25,12 +25,12 @@ const TableHead = ({item, ...props}) => {
 
     return (
         <Row>
-        <Col>{item}</Col>
-        <Col></Col>
-        <Col>fsdf</Col>
-        <Col>fsdf</Col>
-        <Col>fdsd</Col>
-    </Row>
+            <Col>{item}</Col>
+            <Col></Col>
+            <Col>fsdf</Col>
+            <Col>fsdf</Col>
+            <Col>fdsd</Col>
+        </Row>
     );
 };
 
