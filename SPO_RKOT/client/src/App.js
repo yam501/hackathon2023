@@ -23,15 +23,18 @@ function pgFormatDate(inputDateString) {
 
 //Определение кол-ва компаний
 function countCompanies(dataArray) {
+  console.log(dataArray, dataArray.length)
   let companyCount = -1; //т.к. есть непустая строка с описанием
 
   for (let i = 0; i < dataArray.length; i++) {
+    console.log(dataArray[i].trim !== '')
     // Проверка, что элемент не является пустой строкой
     if (dataArray[i].trim() !== '') {
       companyCount++;
     }
   }
 
+  console.log(companyCount)
   return companyCount;
 }
 
@@ -115,7 +118,7 @@ function App() {
   const createInternalTable = async (jsonData, exId) => {
     const externalTableId = exId
     const quantOfCompanies = countCompanies(jsonData[17])  //Определениен количества компаний
-    for (let i = 2; i <= quantOfCompanies; i++) { //От 2 т.к. первые два столба - статичные описания, значения начинаются с 3-го
+    for (let i = 2; i <= quantOfCompanies + 1; i++) { //От 2 т.к. первые два столба - статичные описания, значения начинаются с 3-го
 
       //Статичные индексы, т.к. данные в excel находятся в одних и тех же строках
       //Отличаются лишь столбцы - сами компании, по ним мы и идем с помощью fori
