@@ -18,6 +18,7 @@ export default class ExternalTableStore {
     }
 
     async create(district, place, startDate, endDate) {
+        console.log("Z nen")
         return await ExternalTableService.create(district, place, startDate, endDate)
     }
 
