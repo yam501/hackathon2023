@@ -90,7 +90,7 @@
     font-size: calc(12px + 2 * (100vw/1903));
 }
 
-.location_text:focus{
+.location_text, .date_date, .point_text:focus{
     outline: none;
     border: 1px solid  black;
 }
@@ -107,10 +107,6 @@
     border: 0;
 }
 
-.point_text:focus{
-    outline: none;
-    border: 1px solid  black;
-}
 
 .date_title {
     width: 100%;
@@ -141,4 +137,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 0;
 }
+
+
