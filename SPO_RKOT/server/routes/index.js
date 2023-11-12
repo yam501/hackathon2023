@@ -5,8 +5,10 @@ const internalTableRouter = require('./internalTableRouter')
 
 
 
-
+//Адрес к методам внешней таблицы
 router.use('/externalTable', externalTableRouter)
+
+//Адрес к методам внутренней таблицы
 router.use('/internalTable', internalTableRouter)
 
 

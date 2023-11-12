@@ -1,7 +1,7 @@
 const sequelize = require('../db')
 const { DataTypes } = require('sequelize')
 
-
+// Описание моделей таблиц в бд
 
 const ExternalTable = sequelize.define('externalTable', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -43,7 +43,7 @@ const InternalTable = sequelize.define('internalTable', {
 
 }, { timestamps: false })
 
-
+//Описание связи таблиц в бд
 
 ExternalTable.hasMany(InternalTable)
 InternalTable.belongsTo(ExternalTable)

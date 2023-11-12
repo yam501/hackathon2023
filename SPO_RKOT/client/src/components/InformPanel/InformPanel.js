@@ -14,7 +14,10 @@ const InformPanel = ({openTable, changeDataById, list, dataTable, ...props}) => 
             changeDataById(i, item.id)
         })
     }
-    
+
+    const changeExternalDataById = async () => {
+        await externalTable.changeDataById(dataTable.id, locationValue, pointValue, startDateValue, finishDateValue)
+    }
 
     return (
         <div className='inform_panel mb-3'>
@@ -22,11 +25,11 @@ const InformPanel = ({openTable, changeDataById, list, dataTable, ...props}) => 
                 <div className='location_section_box'>
                     <div className='location_section'>
                         <span className='location_title'>Федеральный округ:</span>
-                        <input className='location_text' value={locationValue} onChange={e => setLocationValue(e.target.value)}/>
+                        <input className='location_text' value={locationValue} onChange={e => setLocationValue(e.target.value)} />
                     </div>
                     <div className='point_section'>
                         <span className='point_title'>Место проведения контроля:</span>
-                        <input className='point_text' value={pointValue} onChange={e => setPointValue(e.target.value)}/>
+                        <input className='point_text' value={pointValue} onChange={e => setPointValue(e.target.value)} />
                     </div>
                 </div>
                 <div className='date_section_box'>
@@ -35,9 +38,9 @@ const InformPanel = ({openTable, changeDataById, list, dataTable, ...props}) => 
                     </div>
                     <div className='date_info_section'>
                         <span className='date_text'>С:</span>
-                        <input className='date_date' type='date' value={startDateValue} onChange={e => setStartDateValue(e.target.value)}/>
+                        <input className='date_date' type='date' value={startDateValue} onChange={e => setStartDateValue(e.target.value)} />
                         <span className='date_text'>До:</span>
-                        <input className='date_date' type='date'  value={finishDateValue} onChange={e => setFinishDateValue(e.target.value)}/>
+                        <input className='date_date' type='date' value={finishDateValue} onChange={e => setFinishDateValue(e.target.value)} />
                     </div>
                 </div>
                 <div className='btns_section'>
@@ -48,5 +51,5 @@ const InformPanel = ({openTable, changeDataById, list, dataTable, ...props}) => 
         </div>
     );
 };
-
+// changeExternalDataById
 export default InformPanel;

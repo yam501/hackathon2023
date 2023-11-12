@@ -7,7 +7,7 @@ const router = require('./routes/index')
 const PORT = process.env.PORT || 5000 //Инициализация порта
 const app = express() //Объект приложения
 const errorHandler = require('./middleware/ErrorHandlingMiddleware') //Инициализация еррорхендлера
-const path = require('path')
+
 
 
 
