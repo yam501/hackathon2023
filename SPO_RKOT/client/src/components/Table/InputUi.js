@@ -46,7 +46,8 @@ const InputUi = ({inputVal, boundVal, changeAccept, dataTable, addDataChange, ch
 
     return (
         <div>
-            <input className={`table_column_input ${boundVal && !boundCheck[boundVal[1]] && 'input_mark'}`}  value={val} onChange={e => setVal(e.target.value)} {...props}/>
+            <input type={props.title.includes('companyName') ? 'text' : 'number'}  min='0' className={`table_column_input ${boundVal && !boundCheck[boundVal[1]] && 'input_mark'}`}  value={val} 
+            onChange={e => setVal(e.target.value == '' ? 0 : e.target.value)} {...props}/>
         </div>
     );
 };
