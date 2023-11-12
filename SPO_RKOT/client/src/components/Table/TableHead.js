@@ -42,7 +42,7 @@ const TableHead = ({item, dataTable, index, accept, ...props}) => {
             'HTTPDLMeanUserDataRate': 'Не менее 80'
         }
     )
-
+    
 
     return (
         <Row className='g-1 table_row_header'>
