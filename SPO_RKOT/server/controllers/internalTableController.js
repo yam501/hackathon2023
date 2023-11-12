@@ -3,7 +3,7 @@ const { InternalTable } = require('../model/model')
 
 class InternalTableController {
 
-
+    //Создание элемента таблицы
     async create(req, res, next) {
         try {
             const {
@@ -33,7 +33,7 @@ class InternalTableController {
             next(ApiError.badRequest(e.message))
         }
     }
-
+    //Получение всех элементов таблицы
     async getAll(req, res, next) {
         try {
             return res.json(await InternalTable.findAll())
@@ -41,7 +41,7 @@ class InternalTableController {
             next(ApiError.badRequest(e.message))
         }
     }
-
+    //Получение нескольких элементов таблицы по вторичному ключу
     async getAllByExternalTableId(req, res, next) {
         try {
             const { externalTableId } = req.body
@@ -51,7 +51,7 @@ class InternalTableController {
             next(ApiError.badRequest(e.message))
         }
     }
-
+    //Изменение полей элемента таблицы
     async changeDataById(req, res, next) {
         try {
             const { id,
@@ -112,7 +112,7 @@ class InternalTableController {
             next(ApiError.badRequest(e.message))
         }
     }
-
+    //Удаление элемента таблицы(не используется)
     async destroy(req, res, next) {
         try {
             const { id } = req.body
