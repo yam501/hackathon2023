@@ -196,7 +196,6 @@ function App() {
             <Table openTable={open} show={openTable}
                    externalTableList={searchedExternalTable.length > 0 ? searchedExternalTable : externalTableList}/>
             {/* <button onClick={() => console.log(place, federalOkr)}> ЖМИ МЕНЯ</button> */}
-
         </div>
     );
 }

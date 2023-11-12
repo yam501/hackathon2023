@@ -11,6 +11,11 @@ body{
     background-color: #e2effa;
 }
 
+.app_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
 .search_panel_wrapper{
     display: flex;
     align-content: center;
