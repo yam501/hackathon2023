@@ -28,7 +28,6 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
 
     const addDataChange = (data) => {
         setDataChange(data)
-        console.log(renderCol)
     }
     const changeAccept = () => setAcceptToSend(true)
 
