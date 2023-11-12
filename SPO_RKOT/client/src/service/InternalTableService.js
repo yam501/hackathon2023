@@ -34,7 +34,7 @@ const InternalTableService = {
     },
 
     async changeDataById(id,
-        externalTableId, companyName,
+        companyName,
 
         voiceServiceNonAcessibility, voiceServiceCutOffRatio, speechQualityonCallbasis, negativeMOSSamplesRatio,
         undeliveredSMSRatio, averageSMSTime,
@@ -45,7 +45,7 @@ const InternalTableService = {
         quantitySessions) {
         return new Promise((resolve) => resolve($host.post('api/internalTable/changeDataById', {
             id,
-            externalTableId, companyName,
+            companyName,
 
             voiceServiceNonAcessibility, voiceServiceCutOffRatio, speechQualityonCallbasis, negativeMOSSamplesRatio,
             undeliveredSMSRatio, averageSMSTime,

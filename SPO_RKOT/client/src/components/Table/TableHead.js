@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import InputUi from './InputUi';
 
-const TableHead = ({item, dataTable, index, ...props}) => {
+const TableHead = ({item, dataTable, index, accept, ...props}) => {
     const [colValue, setColValue] = useState('');
 
     const [nameItem, setNameItem] = useState(
@@ -49,7 +49,12 @@ const TableHead = ({item, dataTable, index, ...props}) => {
             <Col className='col-3 table_column_item'>{nameItem[item]}</Col>
             <Col className='col-2 table_column_dictionary table_column_values'>{dictionary[item]}</Col>
             {dataTable.map(tableItem => <Col className='col-2 table_column_values'>
-                <InputUi  boundVal={dictionary[item] ? [dictionary[item].split('').splice(9).join(''), dictionary[item].split(' ').splice(0, 2).join(' ')] : false} inputVal={tableItem[item]} />
+                <InputUi 
+                id={tableItem.id} 
+                accept={accept} 
+                boundVal={dictionary[item] ? [dictionary[item].split('').splice(9).join(''), dictionary[item].split(' ').splice(0, 2).join(' ')] : false} 
+                inputVal={tableItem[item]} 
+                />
             </Col>)}
     </Row>
 

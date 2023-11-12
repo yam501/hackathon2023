@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import ButtonUI from '../ButtonUI';
 import './informPanel.css'
 import { Context } from '../..';
-const InformPanel = ({openTable, dataTable, ...props}) => {
+const InformPanel = ({openTable, dataTable,acceptToSend, ...props}) => {
     const {externalTable} = useContext(Context)
     const [locationValue, setLocationValue] = useState(dataTable.district)
     const [pointValue, setPointValue] = useState(dataTable.place)
@@ -10,7 +10,7 @@ const InformPanel = ({openTable, dataTable, ...props}) => {
     const [finishDateValue, setFinishDateValue] = useState(dataTable.endDate)
 
     const changeDataById = () => {
-        externalTable.changeDataById(dataTable.id, locationValue, pointValue, startDateValue, finishDateValue)
+        acceptToSend()
     }
     
 

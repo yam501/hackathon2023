@@ -55,7 +55,7 @@ class InternalTableController {
     async changeDataById(req, res, next) {
         try {
             const { id,
-                externalTableId, companyName,
+                companyName,
 
                 voiceServiceNonAcessibility, voiceServiceCutOffRatio, speechQualityonCallbasis, negativeMOSSamplesRatio,
                 undeliveredSMSRatio, averageSMSTime,
@@ -66,7 +66,7 @@ class InternalTableController {
                 quantitySessions
             } = req.body
             const table = await InternalTable.update({
-                externalTableId, companyName,
+                companyName,
 
                 voiceServiceNonAcessibility, voiceServiceCutOffRatio, speechQualityonCallbasis, negativeMOSSamplesRatio,
                 undeliveredSMSRatio, averageSMSTime,
