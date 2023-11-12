@@ -131,7 +131,7 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding: 20px;
+    padding: -20px;
     overflow: hidden;
 }
 
@@ -199,6 +199,11 @@
 
 .table_container{
     overflow: auto;
+    border: 2px solid   #1E3685;
+    border-radius: 7px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 3px;
 }
 
 .table_column_values{
@@ -213,7 +218,7 @@
 }
 
 .table_column_input{
-    width: 120px;
+    width: 115px;
     background-color: rgba(0, 59, 114, 0.4);
     border: 0;
     border-radius: 7px;
