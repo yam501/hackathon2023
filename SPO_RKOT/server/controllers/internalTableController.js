@@ -55,26 +55,56 @@ class InternalTableController {
     async changeDataById(req, res, next) {
         try {
             const { id,
-                companyName,
-
-                voiceServiceNonAcessibility, voiceServiceCutOffRatio, speechQualityonCallbasis, negativeMOSSamplesRatio,
-                undeliveredSMSRatio, averageSMSTime,
-
-                HTTPSessionFailureRatio, HTTPULMeanUserDataRate, HTTPDLMeanUserDataRate, HTTPSessionTime,
-
-                testVoiceConnectionQuantity, POLQA, negativeMOSSamplesCount, SMSQuantity, quantityConnection,
-                quantitySessions
+           
+        
+            companyName,
+        
+            voiceServiceNonAcessibility,
+            voiceServiceCutOffRatio,
+            speechQualityonCallbasis,
+            negativeMOSSamplesRatio,
+        
+            undeliveredSMSRatio,
+            averageSMSTime,
+        
+        
+            HTTPSessionFailureRatio,
+            HTTPULMeanUserDataRate,
+            HTTPDLMeanUserDataRate,
+            HTTPSessionTime,
+        
+            testVoiceConnectionQuantity,
+            POLQA,
+            negativeMOSSamplesCount,
+            SMSQuantity,
+            quantityConnection,
+            quantitySessions
             } = req.body
             const table = await InternalTable.update({
-                companyName,
-
-                voiceServiceNonAcessibility, voiceServiceCutOffRatio, speechQualityonCallbasis, negativeMOSSamplesRatio,
-                undeliveredSMSRatio, averageSMSTime,
-
-                HTTPSessionFailureRatio, HTTPULMeanUserDataRate, HTTPDLMeanUserDataRate, HTTPSessionTime,
-
-                testVoiceConnectionQuantity, POLQA, negativeMOSSamplesCount, SMSQuantity, quantityConnection,
-                quantitySessions
+                companyName:  companyName,
+        
+                voiceServiceNonAcessibility: voiceServiceNonAcessibility,
+                voiceServiceCutOffRatio:voiceServiceCutOffRatio ,
+                speechQualityonCallbasis:speechQualityonCallbasis,
+                negativeMOSSamplesRatio:negativeMOSSamplesRatio,
+            
+                undeliveredSMSRatio: undeliveredSMSRatio,
+                averageSMSTime:averageSMSTime,
+            
+            
+                HTTPSessionFailureRatio: HTTPSessionFailureRatio,
+                HTTPULMeanUserDataRate: HTTPULMeanUserDataRate,
+                HTTPDLMeanUserDataRate: HTTPDLMeanUserDataRate,
+                HTTPSessionTime: HTTPSessionTime,
+            
+                testVoiceConnectionQuantity: testVoiceConnectionQuantity,
+                POLQA: POLQA,
+                negativeMOSSamplesCount: negativeMOSSamplesCount,
+                SMSQuantity: SMSQuantity,
+                quantityConnection: quantityConnection,
+                quantitySessions: quantitySessions
+        
+               
             },
                 { where: { id: id } })
             return res.json(table)
