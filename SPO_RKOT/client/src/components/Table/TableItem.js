@@ -21,7 +21,7 @@ const TableItem = ({ openTable, index, getIndex, dataTable, getDataList, ...prop
 
     return (
         <>
-            <Row className='d-flex justify-content-center align-items-center mb-2'>
+            <Row className='table_item_row'>
                 <Col className='table_column d-flex align-items-center justify-content-center'
                     style={{ textAlign: "center", marginLeft: '7px' }}>{dataTable.district}</Col>
                 <Col

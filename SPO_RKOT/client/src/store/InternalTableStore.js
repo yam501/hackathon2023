@@ -45,6 +45,34 @@ export default class InternalTableStore {
         )
     }
 
+
+    async changeDataById(
+        id,
+        companyName,
+
+        voiceServiceNonAcessibility, voiceServiceCutOffRatio, speechQualityonCallbasis, negativeMOSSamplesRatio,
+        undeliveredSMSRatio, averageSMSTime,
+
+        HTTPSessionFailureRatio, HTTPULMeanUserDataRate, HTTPDLMeanUserDataRate, HTTPSessionTime,
+
+        testVoiceConnectionQuantity, POLQA, negativeMOSSamplesCount, SMSQuantity, quantityConnection,
+        quantitySessions
+
+    ){
+        await InternalTableService.changeDataById(
+        id,
+        companyName,
+
+        voiceServiceNonAcessibility, voiceServiceCutOffRatio, speechQualityonCallbasis, negativeMOSSamplesRatio,
+        undeliveredSMSRatio, averageSMSTime,
+
+        HTTPSessionFailureRatio, HTTPULMeanUserDataRate, HTTPDLMeanUserDataRate, HTTPSessionTime,
+
+        testVoiceConnectionQuantity, POLQA, negativeMOSSamplesCount, SMSQuantity, quantityConnection,
+        quantitySessions
+        )
+    }
+
     get internalTable() {
         return this._internalTable
     }
