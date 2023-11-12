@@ -42,12 +42,14 @@ const TableHead = ({item, dataTable, index, ...props}) => {
             'HTTPDLMeanUserDataRate': 'Не менее 80'
         }
     )
+
+
     return (
         <Row className='g-1 table_row_header'>
             <Col className='col-3 table_column_item'>{nameItem[item]}</Col>
             <Col className='col-2 table_column_dictionary table_column_values'>{dictionary[item]}</Col>
             {dataTable.map(tableItem => <Col className='col-2 table_column_values'>
-                <InputUi inputVal={tableItem[item]} />
+                <InputUi  boundVal={dictionary[item] ? [dictionary[item].split('').splice(9).join(''), dictionary[item].split(' ').splice(0, 2).join(' ')] : false} inputVal={tableItem[item]} />
             </Col>)}
     </Row>
 
