@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Col from 'react-bootstrap/esm/Col';
 
-const InputUi = ({...props}) => {
+const InputUi = ({inputVal, ...props}) => {
+    const [val, setVal] = useState(inputVal)
     return (
         <div>
-            <input {...props}/>
+            <input value={val} onChange={e => setVal(e.target.value)} {...props}/>
         </div>
     );
 };
