@@ -16,10 +16,6 @@ const TableItem = ({openTable, index, getIndex, dataTable, getDataList, ...props
     }
 
     const deleteDataTable = async () => {
-        if (window.confirm("Вы точно хотите удалить отчет?")) {
-            await externalTable.delete(dataTable.id)
-            getDataList()
-        }
         setConfirm(false)
     }
 
