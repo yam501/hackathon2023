@@ -15,19 +15,18 @@
 }
 
 .header_title {
-    margin-left: 3%;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 13%;
-    height: 2.3vw;
-    border: 1px solid #ECF2F6;
+    width: 20%;
+    height: 4vw;
+    background: url("../../assets/logo.png") no-repeat center;
+    padding: 10px;
     border-radius: 7px;
 }
 
 .header_title_text {
-    font-size: calc(18px + 6 * (100vw/1903));
-    font-weight: 550;
     user-select: none;
 }
 

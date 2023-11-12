@@ -12,16 +12,16 @@ const Header = ({handleFile, ...props}) => {
     }
 
     return (
-        <div className='header'>
+        <div className='nav header'>
             {show ?
                 <ModalInfo show={showModal}/>
                 :
                 <></>
             }
 
-            <div className='header_box_content'>
+            <div className='container header_box_content'>
                 <div className='header_title'>
-                    <span className='header_title_text'>СПО РКОТ</span>
+                    <span className='header_title_text'> </span>
                 </div>
                 <div className='header_btn_box'>
                 <ButtonUI className="header_btn">
