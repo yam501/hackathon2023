@@ -85,7 +85,12 @@ function App() {
 
 
   const getDataTables = async () => {
-    await externalTable.fetchAll().then(res => setExternalTableList(externalTable.externalTable))
+    try {
+      await externalTable.fetchAll().then(res => setExternalTableList(externalTable.externalTable))
+      
+    } catch (error) {
+      alert('Проверьте ваше подключение к базе данных')
+    }
 
   }
 
