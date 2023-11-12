@@ -201,3 +201,27 @@
     width: 100%;
     background-color: #1E3685;
 }
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #1E3685 #e2effa;
+  }
+  
+  *::-webkit-scrollbar {
+    height: 1px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #e2effa;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #1E3685;
+    border-radius: 5px;
+    border: 2px solid #e2effa;
+  }
+
+
+.table_container::-webkit-scrollbar {
+    height: 8.5px;
+    width: 1px;
+}

@@ -8,7 +8,7 @@ const InputUi = ({inputVal, ...props}) => {
     }
     useEffect(() => {
         convertVal()
-    }, [val])
+    }, [])
     return (
         <div>
             <input className='table_column_input' value={val} onChange={e => setVal(e.target.value)} {...props}/>
