@@ -28,7 +28,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
 
     const addDataChange = (data) => {
         setDataChange(data)
-        console.log(dataChange)
+        console.log(renderCol)
     }
     const changeAccept = () => setAcceptToSend(true)
 
@@ -50,7 +50,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
     }, [renderCol.length])
 
     const changeDataById = async (i, id) => {
-        await internalTable.changeDataById(
+       dataChange.length > 0 &&  await internalTable.changeDataById(
             id,
             dataChange[i].companyName,
             dataChange[i].voiceServiceNonAcessibility,
@@ -77,7 +77,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
         <div className='container mb-2'>
             {show &&
                 <Container>
-                    <InformPanel changeDataById={changeDataById} openTable={openTable} list={renderCol} dataTable={externalTableList[index]}/>
+                    <InformPanel acceptToSend={acceptToSend} changeDataById={changeDataById} upload={uplod} openTable={openTable} list={renderCol} dataTable={externalTableList[index]}/>
                 </Container>
             }
 

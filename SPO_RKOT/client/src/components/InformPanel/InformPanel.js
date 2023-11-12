@@ -1,23 +1,33 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ButtonUI from '../ButtonUI';
 import './informPanel.css'
 import { Context } from '../..';
-const InformPanel = ({openTable, changeDataById, list, dataTable, ...props}) => {
-    const {externalTable} = useContext(Context)
+import { observable, set } from 'mobx';
+const InformPanel = ({openTable, changeDataById, list, upload, dataTable, ...props}) => {
+    const {externalTable, internalTable} = useContext(Context)
     const [locationValue, setLocationValue] = useState(dataTable.district)
     const [pointValue, setPointValue] = useState(dataTable.place)
     const [startDateValue, setStartDateValue] = useState(dataTable.startDate)
     const [finishDateValue, setFinishDateValue] = useState(dataTable.endDate)
+    const [save, setSave] = useState(false)
+ 
 
     const changeAllDataById = async () => {
-        await list.map((item,i) => {
-            changeDataById(i, item.id)
-        })
+       if (list.length > 0) {
+            setSave(true)
+            setTimeout(() => {
+                setSave(false)
+            }, 1000)
+            await list.map((item,i) => {
+                changeDataById(i, item.id)
+            })
+            await externalTable.changeDataById(dataTable.id, locationValue, pointValue, startDateValue, finishDateValue)
+        }
+        
     }
 
-    const changeExternalDataById = async () => {
-        await externalTable.changeDataById(dataTable.id, locationValue, pointValue, startDateValue, finishDateValue)
-    }
+
+
 
     return (
         <div className='inform_panel mb-3'>
@@ -44,7 +54,7 @@ const InformPanel = ({openTable, changeDataById, list, dataTable, ...props}) => 
                     </div>
                 </div>
                 <div className='btns_section'>
-                    <ButtonUI className='inform_panel_btn' onClick={changeAllDataById}>Сохранить</ButtonUI>
+                    <ButtonUI disabled={!list.length} className={`inform_panel_btn ${save ? 'ok_inform_btn' : ''}`} onClick={changeAllDataById}>Сохранить</ButtonUI>
                     <ButtonUI onClick={() => openTable(false)} className='inform_panel_btn'>Отмена</ButtonUI>
                 </div>
             </div>

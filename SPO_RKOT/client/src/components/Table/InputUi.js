@@ -35,8 +35,6 @@ const InputUi = ({inputVal, boundVal, changeAccept, dataTable, addDataChange, ch
             return prevState
         })
         addDataChange(change)
-        console.log(change)
-        console.log(id, props.title, val)
     }, [val])
 
 
