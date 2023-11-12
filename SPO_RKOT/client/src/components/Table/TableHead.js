@@ -19,7 +19,7 @@ const TableHead = ({item, dataTable, index, ...props}) => {
             <Col className='col-3 table_column_item'>{item}</Col>
             <Col className='col-2 table_column_dictionary table_column_values'>{dictionary[item]}</Col>
             {dataTable.map(tableItem => <Col className='col-1 table_column_values'>
-                <InputUi inputVal={tableItem[item]} className='table_column_input'/>
+                <InputUi inputVal={tableItem[item]} />
             </Col>)}
     </Row>
 
