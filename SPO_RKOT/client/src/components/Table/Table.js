@@ -15,6 +15,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
     const [tableRow, setTableRow] = useState([])
     const [renderCol, setRenderCol] = useState([])
+    const [dataChange, setDataChange] = useState([])
     const [acceptToSend, setAcceptToSend] = useState(false)
     const [check, setCheck] = useState(false)
     const [index, setIndex] = useState(null);
@@ -24,11 +25,16 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
         setId(id)
     }
 
+
+    const addDataChange = (data) => {
+        setDataChange(data)
+        console.log(dataChange)
+    }
     const changeAccept = () => setAcceptToSend(true)
 
     //получение данных для отрисовки таблиц с бд
     const uplod = async () => {
-        id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => setRenderCol(internalTable.internalTable))
+        id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => {setRenderCol(internalTable.internalTable)})
     }
 
     const dynamicParNames = () => {
@@ -43,12 +49,35 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
         check && dynamicParNames()
     }, [renderCol.length])
 
+    const changeDataById = async (i, id) => {
+        await internalTable.changeDataById(
+            id,
+            dataChange[i].companyName,
+            dataChange[i].voiceServiceNonAcessibility,
+            dataChange[i].voiceServiceCutOffRatio,
+            dataChange[i].speechQualityonCallbasis,
+            dataChange[i].negativeMOSSamplesRatio,
+            dataChange[i].undeliveredSMSRatio,
+            dataChange[i].averageSMSTime,
+            dataChange[i].HTTPSessionFailureRatio,
+            dataChange[i].HTTPULMeanUserDataRate,
+            dataChange[i].HTTPDLMeanUserDataRate,
+            dataChange[i].HTTPSessionTime,
+            dataChange[i].testVoiceConnectionQuantity,
+            dataChange[i].POLQA,
+            dataChange[i].negativeMOSSamplesCount,
+            dataChange[i].SMSQuantity,
+            dataChange[i].quantityConnection,
+            dataChange[i].quantitySessions
+            )
+    }
+
 
     return (
         <div className='container mb-2'>
             {show &&
                 <Container>
-                    <InformPanel acceptToSend={changeAccept} openTable={openTable} dataTable={externalTableList[index]}/>
+                    <InformPanel changeDataById={changeDataById} openTable={openTable} list={renderCol} dataTable={externalTableList[index]}/>
                 </Container>
             }
 
@@ -61,12 +90,14 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
                             <Col
                                 className='col-2 table_column_header_dictionary d-flex align-items-center justify-content-center'>Требования
                                 к граничным значениям</Col>
-                            {check && renderCol.map((tableItem) =>
-                                <Col
-                                    className='col-2 table_column_headers d-flex align-items-center justify-content-center'>Значения</Col>)}
+                            {check && renderCol.map((tableItem, i) =>
+                                <>
+                                <Col className='col-2 table_column_headers d-flex align-items-center justify-content-center'>Значения</Col>
+                                </>
+                                )}
                         </Row>
                         {tableRow.map((item, i) =>
-                            <TableHead accept={acceptToSend} item={item} index={i} key={i} dataTable={renderCol}/>
+                            <TableHead addDataChange={addDataChange} changeAccept={changeAccept} item={item} index={i} key={i} dataTable={renderCol}/>
                         )}
                     </div>
                     :
@@ -98,3 +129,4 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
 };
 
 export default observer(Table);
+

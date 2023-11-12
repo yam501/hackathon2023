@@ -5,9 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import InputUi from './InputUi';
 
-const TableHead = ({item, dataTable, index, accept, ...props}) => {
-    const [colValue, setColValue] = useState('');
-
+const TableHead = ({item, dataTable, index, changeAccept, addDataChange, ...props}) => {
+   
     const [nameItem, setNameItem] = useState(
         {
             "companyName": "Компании",
@@ -51,10 +50,13 @@ const TableHead = ({item, dataTable, index, accept, ...props}) => {
             {dataTable.map(tableItem => <Col key={tableItem.id} className='col-2 table_column_values'>
                 <InputUi 
                 id={tableItem.id} 
-                accept={accept} 
+                changeAccept={changeAccept} 
                 tableItem={tableItem}
+                title={item}
+                dataTable={dataTable}
                 boundVal={dictionary[item] ? [dictionary[item].split('').splice(9).join(''), dictionary[item].split(' ').splice(0, 2).join(' ')] : false} 
                 inputVal={tableItem[item]} 
+                addDataChange={addDataChange}
                 />
             </Col>)}
     </Row>

@@ -2,15 +2,17 @@ import React, { useContext, useState } from 'react';
 import ButtonUI from '../ButtonUI';
 import './informPanel.css'
 import { Context } from '../..';
-const InformPanel = ({openTable, dataTable,acceptToSend, ...props}) => {
+const InformPanel = ({openTable, changeDataById, list, dataTable, ...props}) => {
     const {externalTable} = useContext(Context)
     const [locationValue, setLocationValue] = useState(dataTable.district)
     const [pointValue, setPointValue] = useState(dataTable.place)
     const [startDateValue, setStartDateValue] = useState(dataTable.startDate)
     const [finishDateValue, setFinishDateValue] = useState(dataTable.endDate)
 
-    const changeDataById = () => {
-        acceptToSend()
+    const changeAllDataById = async () => {
+        await list.map((item,i) => {
+            changeDataById(i, item.id)
+        })
     }
     
 
@@ -39,7 +41,7 @@ const InformPanel = ({openTable, dataTable,acceptToSend, ...props}) => {
                     </div>
                 </div>
                 <div className='btns_section'>
-                    <ButtonUI className='inform_panel_btn' onClick={changeDataById}>Сохранить</ButtonUI>
+                    <ButtonUI className='inform_panel_btn' onClick={changeAllDataById}>Сохранить</ButtonUI>
                     <ButtonUI onClick={() => openTable(false)} className='inform_panel_btn'>Отмена</ButtonUI>
                 </div>
             </div>

@@ -7,8 +7,9 @@ import { Context } from '../..';
 
 const TableItem = ({ openTable, index, getIndex, dataTable, getDataList, ...props }) => {
 
-    const { externalTable } = useContext(Context)
+    const [confirm, setConfirm] = useState(false);
 
+    const { externalTable } = useContext(Context)
     const openView = () => {
         openTable(true);
         getIndex(index, dataTable.id);
@@ -17,6 +18,7 @@ const TableItem = ({ openTable, index, getIndex, dataTable, getDataList, ...prop
     const deleteDataTable = async () => {
         await externalTable.delete(dataTable.id)
         getDataList()
+        setConfirm(false)
     }
 
     return (
@@ -33,11 +35,17 @@ const TableItem = ({ openTable, index, getIndex, dataTable, getDataList, ...prop
                 <Col className='table_btn_box'>
                     <span className='table_column_btn'>
                         <ButtonUI className="table_item_btn" onClick={openView}>Посмотреть</ButtonUI>
-                        <ButtonUI className="table_item_btn" onClick={deleteDataTable}>Удалить</ButtonUI>
+                        <ButtonUI className="table_item_btn" onClick={() => setConfirm(true)}>Удалить</ButtonUI>
                     </span>
                 </Col>
             </Row>
             <div className='palka'></div>
+            {confirm && 
+            <div>
+                <span>Вы точно хотите удалить это?</span>
+                <ButtonUI className="table_item_btn ms-2" onClick={deleteDataTable}>Да</ButtonUI>
+                <ButtonUI className="table_item_btn ms-2" onClick={() => setConfirm(false)}>Отмена</ButtonUI>
+            </div>}
         </>
 
     );
