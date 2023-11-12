@@ -54,7 +54,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
                 {show === true ?
                     <div className='table_container'>
                         <Row className='g-1 row-cols-auto table_row_header'>
-                            <Col className='col-3 table_column_header d-flex align-items-center justify-content-center'>Параметры
+                            <Col style={{borderTopLeftRadius: '7px'}} className='col-3 table_column_header d-flex align-items-center justify-content-center'>Параметры
                                 качества</Col>
                             <Col
                                 className='col-2 table_column_header_dictionary d-flex align-items-center justify-content-center'>Требования
