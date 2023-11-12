@@ -52,6 +52,7 @@ const TableHead = ({item, dataTable, index, accept, ...props}) => {
                 <InputUi 
                 id={tableItem.id} 
                 accept={accept} 
+                tableItem={tableItem}
                 boundVal={dictionary[item] ? [dictionary[item].split('').splice(9).join(''), dictionary[item].split(' ').splice(0, 2).join(' ')] : false} 
                 inputVal={tableItem[item]} 
                 />

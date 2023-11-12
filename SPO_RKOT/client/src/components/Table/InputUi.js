@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import { Context } from '../..';
 
-const InputUi = ({inputVal, boundVal, accept, id, ...props}) => {
+const InputUi = ({inputVal, boundVal, accept, id, tableItem, ...props}) => {
     const {internalTable} = useContext(Context);
     const [val, setVal] = useState(inputVal)
     const [boundCheck, setBoundCheck] = useState(boundVal &&
@@ -15,9 +15,14 @@ const InputUi = ({inputVal, boundVal, accept, id, ...props}) => {
         setVal(isNaN(+val) ? val : +val.toFixed(1))
     }
 
-    const changeDataById = () => {
-        accept && internalTable.changeDataById(id)
+    const changeDataById = async () => {
+        await internalTable.changeDataById(id)
     }
+
+    useEffect(() => {
+        accept && changeDataById()
+    }, [accept])
+
     useEffect(() => {
         convertVal()
     }, [])
