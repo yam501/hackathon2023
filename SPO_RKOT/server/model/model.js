@@ -16,7 +16,7 @@ const ExternalTable = sequelize.define('externalTable', {
 
 const InternalTable = sequelize.define('internalTable', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    externalTableId: { type: DataTypes.INTEGER, allowNull: true },
+    externalTableId: { type: DataTypes.INTEGER, allowNull: false },
 
     companyName: { type: DataTypes.STRING, allowNull: true },
 

@@ -16,6 +16,8 @@ const TableItem = ({openTable, index, getIndex, dataTable, getDataList, ...props
     }
 
     const deleteDataTable = async () => {
+        await externalTable.delete(dataTable.id)
+        getDataList()
         setConfirm(false)
     }
 
