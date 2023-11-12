@@ -15,7 +15,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
     const [tableRow, setTableRow] = useState([])
     const [renderCol, setRenderCol] = useState([])
-    const [mainTable, setMainTable] = useState([])
+    const [acceptToSend, setAcceptToSend] = useState(false)
     const [check, setCheck] = useState(false)
     const [index, setIndex] = useState(null);
     const [id, setId] = useState(null);
@@ -23,6 +23,8 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
         setIndex(i)
         setId(id)
     }
+
+    const changeAccept = () => setAcceptToSend(true)
 
     //получение данных для отрисовки таблиц с бд
     const uplod = async () => {
@@ -46,7 +48,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
         <div className='container mb-2'>
             {show &&
                 <Container>
-                    <InformPanel openTable={openTable} dataTable={externalTableList[index]}/>
+                    <InformPanel acceptToSend={changeAccept} openTable={openTable} dataTable={externalTableList[index]}/>
                 </Container>
             }
 
@@ -64,7 +66,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
                                     className='col-1 table_column_headers d-flex align-items-center justify-content-center'>Значения</Col>)}
                         </Row>
                         {tableRow.map((item, i) =>
-                            <TableHead item={item} index={i} key={i} dataTable={renderCol}/>
+                            <TableHead accept={acceptToSend} item={item} index={i} key={i} dataTable={renderCol}/>
                         )}
                     </div>
                     :
