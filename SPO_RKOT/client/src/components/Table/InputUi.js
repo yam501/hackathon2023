@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 
-const InputUi = ({inputVal, ...props}) => {
+const InputUi = ({inputVal, boundVal, ...props}) => {
     const [val, setVal] = useState(inputVal)
+    const [boundCheck, setBoundCheck] = useState(boundVal &&
+        {
+            'Не менее': val >= boundVal[0],
+            'Не более': val <= boundVal[0]
+        }
+    )
     const convertVal = () => {
         setVal(isNaN(+val) ? val : +val.toFixed(1))
     }
     useEffect(() => {
         convertVal()
     }, [])
+
+
     return (
         <div>
-            <input className={`table_column_input`} value={val} onChange={e => setVal(e.target.value)} {...props}/>
+            <input className={`table_column_input ${boundVal && !boundCheck[boundVal[1]] && 'input_mark'}`} value={val} onChange={e => setVal(e.target.value)} {...props}/>
         </div>
     );
 };

@@ -21,7 +21,7 @@ const TableHead = ({item, dataTable, index, ...props}) => {
             <Col className='col-3 table_column_item'>{item}</Col>
             <Col className='col-2 table_column_dictionary table_column_values'>{dictionary[item]}</Col>
             {dataTable.map(tableItem => <Col className='col-1 table_column_values'>
-                <InputUi  boundVal={dictionary[item] && dictionary[item][dictionary[item].length - 1]} inputVal={tableItem[item]} />
+                <InputUi  boundVal={dictionary[item] ? [dictionary[item].split('').splice(9).join(''), dictionary[item].split(' ').splice(0, 2).join(' ')] : false} inputVal={tableItem[item]} />
             </Col>)}
     </Row>
 

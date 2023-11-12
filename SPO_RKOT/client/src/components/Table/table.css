@@ -221,3 +221,7 @@
     height: 8.5px;
     width: 1px;
 }
+
+.input_mark {
+    background-color: rgba(220, 23, 23, 0.533)
+}
