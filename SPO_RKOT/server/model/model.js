@@ -39,7 +39,7 @@ const InternalTable = sequelize.define('internalTable', {
     negativeMOSSamplesCount: { type: DataTypes.FLOAT, allowNull: false },
     SMSQuantity: { type: DataTypes.FLOAT, allowNull: false },
     quantityConnection: { type: DataTypes.FLOAT, allowNull: false },
-    quantitySessions: { type: DataTypes.FLOAT, allowNull: false },
+    quantitySessions: { type: DataTypes.FLOAT, allowNull: false }
 
 }, { timestamps: false })
 
