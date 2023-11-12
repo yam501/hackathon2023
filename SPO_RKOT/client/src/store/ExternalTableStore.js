@@ -23,11 +23,14 @@ export default class ExternalTableStore {
     }
 
     async create(district, place, startDate, endDate) {
-        console.log("Z nen")
         return await ExternalTableService.create(district, place, startDate, endDate)
     }
 
-    get externalTable(){
+    async delete(id) {
+        await ExternalTableService.delete(id)
+    }
+
+    get externalTable() {
         return this._externalTable
     }
 

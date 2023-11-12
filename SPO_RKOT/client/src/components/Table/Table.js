@@ -10,7 +10,7 @@ import InformPanel from '../InformPanel/InformPanel';
 import ButtonUI from '../ButtonUI';
 import {observer} from 'mobx-react-lite';
 
-const Table = ({openTable, show, externalTableList, ...props}) => {
+const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
     const [tableRow, setTableRow] = useState([])
     const [renderCol, setRenderCol] = useState([])
@@ -83,7 +83,7 @@ const Table = ({openTable, show, externalTableList, ...props}) => {
                             <Col
                                 className='table_column_header d-flex align-items-center justify-content-center'>Посмотреть</Col>
                         </Row>
-                        {externalTableList.map((item, i) => <TableItem openTable={openTable} getIndex={getIndex}
+                        {externalTableList.map((item, i) => <TableItem getDataList={getDataList} openTable={openTable} getIndex={getIndex}
                                                                        index={i} dataTable={item}/>)}
                     </>
                 }
