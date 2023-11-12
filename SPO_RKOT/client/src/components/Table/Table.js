@@ -60,7 +60,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
                                 к граничным значениям</Col>
                             {check && internalTable.internalTable.map((tableItem) =>
                                 <Col
-                                    className='col-1 table_column_headers d-flex align-items-center justify-content-center'>Значения</Col>)}
+                                    className='col-2 table_column_headers d-flex align-items-center justify-content-center'>Значения</Col>)}
                         </Row>
                         {tableRow.map((item, i) =>
                             <TableHead item={item} index={i} dataTable={renderCol}/>
