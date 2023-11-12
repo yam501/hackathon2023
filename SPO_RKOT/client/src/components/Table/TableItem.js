@@ -21,7 +21,7 @@ const TableItem = ({ openTable, index, getIndex, dataTable, getDataList, ...prop
 
     return (
         <>
-            <Row className='mb-2'>
+            <Row className='d-flex justify-content-center align-items-center mb-2'>
                 <Col className='table_column d-flex align-items-center justify-content-center'
                     style={{ textAlign: "center", marginLeft: '7px' }}>{dataTable.district}</Col>
                 <Col
@@ -37,6 +37,7 @@ const TableItem = ({ openTable, index, getIndex, dataTable, getDataList, ...prop
                     </span>
                 </Col>
             </Row>
+            <div className='palka'></div>
         </>
 
     );
