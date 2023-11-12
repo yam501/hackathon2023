@@ -13,6 +13,7 @@
     height: 3.5vw;
     border-radius: 7px;
     color: white;
+    font-size: calc(12px + 1 * (100vw / 1903));
 }
 .table_column_second {
     color: black;
@@ -23,14 +24,18 @@
     margin-right: 20px;
     background-color: #98b5ff;
     text-align: center;
+    font-size: calc(12px + 2 * (100vw / 1903));
 }
 
 .table_column_header_first{
     background-color: #1E3685;
     height: 100%;
+    width: 180px;
     margin-right: 5px;
     margin-left: 5px;
     border-radius: 7px;
+    text-align: center;
+    font-size: calc(14px + 2 * (100vw / 1903));
 }
 
 .table_column_header{
@@ -47,14 +52,15 @@
     margin-right: 7px;
     background-color: #98b5ff;
     text-align: center;
+    font-size: calc(14px + 2 * (100vw / 1903));
+
 }
 
 .table {
     font-size: calc(18px + 6 * (100vw / 1903));
     text-align: center;
     width: 95vw;
-    margin: auto;
-    margin-top: 2.5vw;
+    margin: 2.5vw auto auto;
 }
 
 .table_column_btn {
@@ -62,18 +68,30 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .table_btn_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     margin-left: 5px;
     margin-right: 5px;
 }
 
+.table_item_row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
 .table_item_btn {
     cursor: pointer;
-    width: 80%;
+    width: 120px;
     height: 2vw;
     background-color: #5199FF;
     border: 0;
@@ -109,9 +127,10 @@
 }
 
 .table_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    border: 2px solid #1E3685;
-    border-radius: 7px;
     padding: 20px;
     overflow: hidden;
 }
@@ -123,6 +142,12 @@
     border-radius: 7px;
     color: white;
     margin-bottom: 10px;
+}
+
+.main_table_container{
+    border: 2px solid #1E3685;
+    border-radius: 7px;
+    padding: 35px;
 }
 
 .main_table_row_header{
@@ -137,6 +162,7 @@
 .table_column_headers{
     background-color: #284A9D;
     height: 100%;
+    width: 120px;
     border: 1px solid white;
 }
 
@@ -144,6 +170,7 @@
 .table_column_header_dictionary{
     color: black;
     height: 100%;
+    width: 120px;
     border: 1px solid white;
     background-color: #98b5ff;
     text-align: center;
@@ -180,7 +207,9 @@
     justify-content: center;
     background-color: #406BD3;
     height: 100%;
+    width: 120px;
     border: 1px solid white;
+    border-radius: 7px;
 }
 
 .table_column_input{

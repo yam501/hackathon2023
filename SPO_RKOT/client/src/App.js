@@ -175,7 +175,7 @@ function App() {
     <div>
       <Header handleFile={handleFile} />
       {!openTable && <div className='mt-2 container search_panel_wrapper'>
-        <h1 className='mt-5 d-flex align-items-center justify-content-center'>
+        <h1 className='mt-3 d-flex align-items-center justify-content-center'>
           Поисковая панель
         </h1>
         <div className='container search_panel_content'>
@@ -185,11 +185,11 @@ function App() {
           <label className='search_panel_label' for='plc'> Город </label>
           <input className='search_panel_input' id='plc' value={place}
             onChange={e => setPlace(e.target.value)}></input>
-          <label className='search_panel_label' for='sd'> Дата 1 </label>
+          <label className='search_panel_label' for='sd'> Введите дату</label>
           <input className='search_panel_input' id='sd' value={date}
             onChange={e => setDate(e.target.value)}></input>
           <select className='search_panel_select' onChange={e => setSortFiltr(e.target.value)}>
-            <option value={''}>Выберите тип сортировки</option>
+            <option value={''}>Соритровка даты</option>
             <option value={1}>По возрастанию</option>
             <option value={2}>По убыванию</option>
           </select>
