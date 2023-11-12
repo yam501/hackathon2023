@@ -12,16 +12,14 @@ const InputUi = ({inputVal, boundVal, accept, id, tableItem, ...props}) => {
         }
     )
     const convertVal = () => {
-        setVal(isNaN(val) ? val : +val.toFixed(1))
+        try {
+            setVal(isNaN(val) ? val : +val.toFixed(1))
+        } catch {
+
+        }
     }
 
-    const changeDataById = async () => {
-        await internalTable.changeDataById(id)
-    }
 
-    useEffect(() => {
-        accept && changeDataById()
-    }, [accept])
 
     useEffect(() => {
         convertVal()

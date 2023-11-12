@@ -29,18 +29,18 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
     //получение данных для отрисовки таблиц с бд
     const uplod = async () => {
         id !== null && await internalTable.getAllByExternalTableId(id).then(res => setCheck(true)).then(res => setRenderCol(internalTable.internalTable))
-
     }
 
     const dynamicParNames = () => {
         setTableRow(Object.keys(renderCol[0] ? renderCol[0] : {}).splice(2))
     }
+
     useEffect(() => {
         uplod()
     }, [id])
 
     useEffect(() => {
-        dynamicParNames()
+        check && dynamicParNames()
     }, [renderCol.length])
 
 
@@ -53,7 +53,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
             }
 
             <div className='table_wrapper'>
-                {show === true ?
+                {show ?
                     <div className='table_container'>
                         <Row className='g-1 row-cols-auto table_row_header'>
                             <Col style={{borderTopLeftRadius: '7px'}} className='col-3 table_column_header d-flex align-items-center justify-content-center'>Параметры
@@ -61,7 +61,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
                             <Col
                                 className='col-2 table_column_header_dictionary d-flex align-items-center justify-content-center'>Требования
                                 к граничным значениям</Col>
-                            {check && internalTable.internalTable.map((tableItem) =>
+                            {check && renderCol.map((tableItem) =>
                                 <Col
                                     className='col-2 table_column_headers d-flex align-items-center justify-content-center'>Значения</Col>)}
                         </Row>

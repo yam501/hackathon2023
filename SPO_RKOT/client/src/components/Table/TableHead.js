@@ -48,7 +48,7 @@ const TableHead = ({item, dataTable, index, accept, ...props}) => {
         <Row className='g-1 table_row_header'>
             <Col className='col-3 table_column_item'>{nameItem[item]}</Col>
             <Col className='col-2 table_column_dictionary table_column_values'>{dictionary[item]}</Col>
-            {dataTable.map(tableItem => <Col className='col-2 table_column_values'>
+            {dataTable.map(tableItem => <Col key={tableItem.id} className='col-2 table_column_values'>
                 <InputUi 
                 id={tableItem.id} 
                 accept={accept} 
