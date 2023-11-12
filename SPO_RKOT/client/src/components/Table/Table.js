@@ -9,6 +9,7 @@ import {Context} from '../..';
 import InformPanel from '../InformPanel/InformPanel';
 import ButtonUI from '../ButtonUI';
 import {observer} from 'mobx-react-lite';
+import TableItemList from './TableItemList';
 
 const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
     const {externalTable, internalTable} = useContext(Context);
@@ -63,7 +64,7 @@ const Table = ({openTable, show, externalTableList,getDataList, ...props}) => {
                                     className='col-2 table_column_headers d-flex align-items-center justify-content-center'>Значения</Col>)}
                         </Row>
                         {tableRow.map((item, i) =>
-                            <TableHead item={item} index={i} dataTable={renderCol}/>
+                            <TableHead item={item} index={i} key={i} dataTable={renderCol}/>
                         )}
                     </div>
                     :

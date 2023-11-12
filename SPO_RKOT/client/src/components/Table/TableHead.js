@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import InputUi from './InputUi';
 
 const TableHead = ({item, dataTable, index, ...props}) => {
     const [colValue, setColValue] = useState('');
@@ -46,11 +47,10 @@ const TableHead = ({item, dataTable, index, ...props}) => {
             <Col className='col-3 table_column_item'>{nameItem[item]}</Col>
             <Col className='col-2 table_column_dictionary table_column_values'>{dictionary[item]}</Col>
             {dataTable.map(tableItem => <Col className='col-2 table_column_values'>
-                <input className='table_column_input' key={tableItem.id}
-                        // Number(tableItem[item]).toFixed(2) вместо tableItem[item], будет округление
-                       value={colValue === '' ? tableItem[item] : colValue}
-                       onChange={e => setColValue(e.target.value)}/></Col>)}
-        </Row>
+                <InputUi inputVal={tableItem[item]} />
+            </Col>)}
+    </Row>
+
     );
 };
 
