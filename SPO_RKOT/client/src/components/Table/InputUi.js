@@ -12,7 +12,7 @@ const InputUi = ({inputVal, boundVal, accept, id, tableItem, ...props}) => {
         }
     )
     const convertVal = () => {
-        setVal(isNaN(+val) ? val : +val.toFixed(1))
+        setVal(isNaN(val) ? val : +val.toFixed(1))
     }
 
     const changeDataById = async () => {
