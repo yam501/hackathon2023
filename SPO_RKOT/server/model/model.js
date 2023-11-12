@@ -16,30 +16,30 @@ const ExternalTable = sequelize.define('externalTable', {
 
 const InternalTable = sequelize.define('internalTable', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    externalTableId: { type: DataTypes.INTEGER, allowNull: false },
+    externalTableId: { type: DataTypes.INTEGER, allowNull: true },
 
-    companyName: { type: DataTypes.STRING, allowNull: false },
+    companyName: { type: DataTypes.STRING, allowNull: true },
 
-    voiceServiceNonAcessibility: { type: DataTypes.FLOAT, allowNull: false },
-    voiceServiceCutOffRatio: { type: DataTypes.FLOAT, allowNull: false },
-    speechQualityonCallbasis: { type: DataTypes.FLOAT, allowNull: false },
-    negativeMOSSamplesRatio: { type: DataTypes.FLOAT, allowNull: false },
+    voiceServiceNonAcessibility: { type: DataTypes.FLOAT, allowNull: true },
+    voiceServiceCutOffRatio: { type: DataTypes.FLOAT, allowNull: true },
+    speechQualityonCallbasis: { type: DataTypes.FLOAT, allowNull: true },
+    negativeMOSSamplesRatio: { type: DataTypes.FLOAT, allowNull: true },
 
-    undeliveredSMSRatio: { type: DataTypes.FLOAT, allowNull: false },
-    averageSMSTime: { type: DataTypes.FLOAT, allowNull: false },
+    undeliveredSMSRatio: { type: DataTypes.FLOAT, allowNull: true },
+    averageSMSTime: { type: DataTypes.FLOAT, allowNull: true },
 
 
-    HTTPSessionFailureRatio: { type: DataTypes.FLOAT, allowNull: false },
-    HTTPULMeanUserDataRate: { type: DataTypes.FLOAT, allowNull: false },
-    HTTPDLMeanUserDataRate: { type: DataTypes.FLOAT, allowNull: false },
-    HTTPSessionTime: { type: DataTypes.FLOAT, allowNull: false },
+    HTTPSessionFailureRatio: { type: DataTypes.FLOAT, allowNull: true },
+    HTTPULMeanUserDataRate: { type: DataTypes.FLOAT, allowNull: true },
+    HTTPDLMeanUserDataRate: { type: DataTypes.FLOAT, allowNull: true },
+    HTTPSessionTime: { type: DataTypes.FLOAT, allowNull: true },
 
-    testVoiceConnectionQuantity: { type: DataTypes.FLOAT, allowNull: false },
-    POLQA: { type: DataTypes.FLOAT, allowNull: false },
-    negativeMOSSamplesCount: { type: DataTypes.FLOAT, allowNull: false },
-    SMSQuantity: { type: DataTypes.FLOAT, allowNull: false },
-    quantityConnection: { type: DataTypes.FLOAT, allowNull: false },
-    quantitySessions: { type: DataTypes.FLOAT, allowNull: false }
+    testVoiceConnectionQuantity: { type: DataTypes.FLOAT, allowNull: true },
+    POLQA: { type: DataTypes.FLOAT, allowNull: true },
+    negativeMOSSamplesCount: { type: DataTypes.FLOAT, allowNull: true },
+    SMSQuantity: { type: DataTypes.FLOAT, allowNull: true },
+    quantityConnection: { type: DataTypes.FLOAT, allowNull: true },
+    quantitySessions: { type: DataTypes.FLOAT, allowNull: true }
 
 }, { timestamps: false })
 
