@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import ButtonUI from '../ButtonUI';
 import './informPanel.css'
 import { Context } from '../..';
-const InformPanel = ({openTable, dataTable,acceptToSend, ...props}) => {
-    const {externalTable} = useContext(Context)
+const InformPanel = ({ openTable, dataTable, acceptToSend, ...props }) => {
+    const { externalTable } = useContext(Context)
     const [locationValue, setLocationValue] = useState(dataTable.district)
     const [pointValue, setPointValue] = useState(dataTable.place)
     const [startDateValue, setStartDateValue] = useState(dataTable.startDate)
@@ -12,7 +12,10 @@ const InformPanel = ({openTable, dataTable,acceptToSend, ...props}) => {
     const changeDataById = () => {
         acceptToSend()
     }
-    
+
+    const changeExternalDataById = async () => {
+        await externalTable.changeDataById(dataTable.id, locationValue, pointValue, startDateValue, finishDateValue)
+    }
 
     return (
         <div className='inform_panel mb-3'>
@@ -20,11 +23,11 @@ const InformPanel = ({openTable, dataTable,acceptToSend, ...props}) => {
                 <div className='location_section_box'>
                     <div className='location_section'>
                         <span className='location_title'>Федеральный округ:</span>
-                        <input className='location_text' value={locationValue} onChange={e => setLocationValue(e.target.value)}/>
+                        <input className='location_text' value={locationValue} onChange={e => setLocationValue(e.target.value)} />
                     </div>
                     <div className='point_section'>
                         <span className='point_title'>Место проведения контроля:</span>
-                        <input className='point_text' value={pointValue} onChange={e => setPointValue(e.target.value)}/>
+                        <input className='point_text' value={pointValue} onChange={e => setPointValue(e.target.value)} />
                     </div>
                 </div>
                 <div className='date_section_box'>
@@ -33,18 +36,18 @@ const InformPanel = ({openTable, dataTable,acceptToSend, ...props}) => {
                     </div>
                     <div className='date_info_section'>
                         <span className='date_text'>С:</span>
-                        <input className='date_date' type='date' value={startDateValue} onChange={e => setStartDateValue(e.target.value)}/>
+                        <input className='date_date' type='date' value={startDateValue} onChange={e => setStartDateValue(e.target.value)} />
                         <span className='date_text'>До:</span>
-                        <input className='date_date' type='date'  value={finishDateValue} onChange={e => setFinishDateValue(e.target.value)}/>
+                        <input className='date_date' type='date' value={finishDateValue} onChange={e => setFinishDateValue(e.target.value)} />
                     </div>
                 </div>
                 <div className='btns_section'>
-                    <ButtonUI className='inform_panel_btn' onClick={changeDataById}>Сохранить</ButtonUI>
+                    <ButtonUI className='inform_panel_btn' onClick={changeExternalDataById}>Сохранить</ButtonUI>
                     <ButtonUI onClick={() => openTable(false)} className='inform_panel_btn'>Отмена</ButtonUI>
                 </div>
             </div>
         </div>
     );
 };
-
+// changeExternalDataById
 export default InformPanel;

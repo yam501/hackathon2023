@@ -27,8 +27,8 @@ class ExternalTableController {
 
     async changeDataById(req, res, next) {
         try {
-            const { id, district, place, period } = req.body
-            const table = await ExternalTable.update({ district, place, period }, { where: { id: id } })
+            const { id, district, place, startDate, endDate } = req.body
+            const table = await ExternalTable.update({ district, place, startDate, endDate }, { where: { id: id } })
             return res.json(table)
         } catch (e) {
             next(ApiError.badRequest(e.message))
